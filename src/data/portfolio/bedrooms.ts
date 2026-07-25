@@ -1,0 +1,105 @@
+import { createProject } from "@/lib/portfolio";
+import type { Project } from "@/types/portfolio";
+
+// Descriptive fields (style, overview, designConcept, materialPalette,
+// lightingStrategy, keyFeatures, visualIdentity, keywords) are intentionally
+// left empty — no real content has been provided yet for these projects.
+
+export const BEDROOMS: Project[] = [
+  createProject({
+    slug: "bedroom-01",
+    title: "Bedroom 01",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "primary", aspect: "wide" },
+    heroImage: "/images/interiors/bedroom/bedroom-01.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-02",
+    title: "Bedroom 02",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "square" },
+    heroImage: "/images/interiors/bedroom/bedroom-02.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-03",
+    title: "Bedroom 03",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "portrait" },
+    heroImage: "/images/interiors/bedroom/bedroom-03.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-04",
+    title: "Bedroom 04",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "landscape" },
+    heroImage: "/images/interiors/bedroom/bedroom-04.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-05",
+    title: "Bedroom 05",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "secondary", aspect: "wide" },
+    heroImage: "/images/interiors/bedroom/bedroom-05.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-06",
+    title: "Bedroom 06",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "square" },
+    heroImage: "/images/interiors/bedroom/bedroom-06.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-07",
+    title: "Bedroom 07",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "portrait" },
+    heroImage: "/images/interiors/bedroom/bedroom-07.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-08",
+    title: "Bedroom 08",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "landscape" },
+    heroImage: "/images/interiors/bedroom/bedroom-08.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-09",
+    title: "Bedroom 09",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "secondary", aspect: "landscape" },
+    heroImage: "/images/interiors/bedroom/bedroom-09.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-10",
+    title: "Bedroom 10",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "square" },
+    heroImage: "/images/interiors/bedroom/bedroom-10.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-11",
+    title: "Bedroom 11",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "portrait" },
+    heroImage: "/images/interiors/bedroom/bedroom-11.jpeg",
+  }),
+  createProject({
+    slug: "bedroom-12",
+    title: "Bedroom 12",
+    category: "bedroom",
+    projectType: "interior-design",
+    presentation: { importance: "standard", aspect: "landscape" },
+    heroImage: "/images/interiors/bedroom/bedroom-12.jpeg",
+  }),
+];
