@@ -170,12 +170,20 @@ export function Navbar() {
   function handleNavClick(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
     event.preventDefault();
     setIsMenuOpen(false);
+    // Lenis is stopped while the mobile menu is open (see the scroll-lock
+    // effect above) and that effect hasn't re-run yet at this point in the
+    // same tick — scrollTo() called while stopped is silently dropped, not
+    // queued. Starting it explicitly here, rather than waiting for the
+    // effect, is what makes the scroll actually happen.
+    lenis?.start();
     lenis?.scrollTo(href);
   }
 
   function handleBrandClick(event: React.MouseEvent<HTMLAnchorElement>) {
     event.preventDefault();
     setIsMenuOpen(false);
+    // Same ordering fix as handleNavClick — see the comment there.
+    lenis?.start();
     lenis?.scrollTo(0);
   }
 
