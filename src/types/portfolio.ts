@@ -9,6 +9,7 @@ export type ProjectCategory =
   | "architecturalplan"
   | "livingroom"
   | "kitchen"
+  | "tvlounge"
   | "commercial"
   | "landscape";
 

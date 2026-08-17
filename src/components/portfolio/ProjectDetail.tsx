@@ -124,11 +124,13 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
         </h1>
 
         {specs.length > 0 && (
-          <dl className="flex flex-wrap gap-x-8 gap-y-2">
+          <dl className="flex flex-wrap gap-x-10 gap-y-4">
             {specs.map((spec) => (
               <div key={spec.label}>
-                <dt className="sr-only">{spec.label}</dt>
-                <dd className="font-sans text-xs uppercase tracking-[0.2em] text-stone">
+                <dt className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+                  {spec.label}
+                </dt>
+                <dd className="mt-1 font-sans text-sm uppercase tracking-[0.15em] text-ink">
                   {spec.value}
                 </dd>
               </div>

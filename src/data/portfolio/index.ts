@@ -3,7 +3,9 @@ import { BATHROOMS } from "@/data/portfolio/bathrooms";
 import { BEDROOMS } from "@/data/portfolio/bedrooms";
 import { DINING_ROOMS } from "@/data/portfolio/diningRooms";
 import { ELEVATIONS } from "@/data/portfolio/elevations";
+import { KITCHENS } from "@/data/portfolio/kitchens";
 import { OFFICES } from "@/data/portfolio/offices";
+import { TV_LOUNGES } from "@/data/portfolio/tvLounges";
 import type { Project, ProjectCategory } from "@/types/portfolio";
 
 export * from "@/data/portfolio/architecturalPlans";
@@ -12,7 +14,9 @@ export * from "@/data/portfolio/bedrooms";
 export * from "@/data/portfolio/diningRooms";
 export * from "@/data/portfolio/elevations";
 export * from "@/data/portfolio/featured";
+export * from "@/data/portfolio/kitchens";
 export * from "@/data/portfolio/offices";
+export * from "@/data/portfolio/tvLounges";
 
 // Featured projects are not spread in here — they're the same objects
 // already included via ELEVATIONS/OFFICES above, not a separate category.
@@ -20,6 +24,8 @@ export const ALL_PROJECTS: Project[] = [
   ...BATHROOMS,
   ...BEDROOMS,
   ...DINING_ROOMS,
+  ...KITCHENS,
+  ...TV_LOUNGES,
   ...OFFICES,
   ...ELEVATIONS,
   ...ARCHITECTURAL_PLANS,

@@ -77,6 +77,7 @@ export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   architecturalplan: "Architectural Plans",
   livingroom: "Living Rooms",
   kitchen: "Kitchens",
+  tvlounge: "TV Lounges",
   commercial: "Commercial",
   landscape: "Landscape",
 };
@@ -89,18 +90,21 @@ export const PROJECT_TYPE_LABELS: Record<ProjectType, string> = {
 /**
  * A fixed, deliberately ordered editorial hierarchy — not derived from
  * whichever categories currently have data, so the full intended taxonomy
- * (including categories with no projects yet) is always visible.
+ * (including categories with no projects yet) is always visible. "Architecture"
+ * stands in as the umbrella for elevations + architectural plans; individual
+ * room categories cover interior work directly, so no separate "Interior
+ * Design" umbrella filter is listed alongside them.
  */
 export const PORTFOLIO_FILTERS: { value: PortfolioFilter; label: string }[] = [
   { value: "all", label: "All" },
   { value: "architecture", label: PROJECT_TYPE_LABELS.architecture },
-  { value: "interior-design", label: PROJECT_TYPE_LABELS["interior-design"] },
   { value: "bathroom", label: CATEGORY_LABELS.bathroom },
   { value: "bedroom", label: CATEGORY_LABELS.bedroom },
   { value: "diningroom", label: CATEGORY_LABELS.diningroom },
-  { value: "livingroom", label: CATEGORY_LABELS.livingroom },
-  { value: "kitchen", label: CATEGORY_LABELS.kitchen },
   { value: "office", label: CATEGORY_LABELS.office },
+  { value: "kitchen", label: CATEGORY_LABELS.kitchen },
+  { value: "tvlounge", label: CATEGORY_LABELS.tvlounge },
+  { value: "livingroom", label: CATEGORY_LABELS.livingroom },
   { value: "elevation", label: CATEGORY_LABELS.elevation },
   { value: "architecturalplan", label: CATEGORY_LABELS.architecturalplan },
   { value: "landscape", label: CATEGORY_LABELS.landscape },
@@ -134,4 +138,136 @@ export function resolvePresentation(presentation: ProjectPresentation): {
     span: IMPORTANCE_SPAN[presentation.importance],
     aspect: ASPECT_RATIO[presentation.aspect],
   };
+}
+
+// --- Editorial compositions -------------------------------------------------
+// A small, fixed set of handcrafted multi-image spreads. The Portfolio grid
+// consumes a project list by repeatedly taking the next composition's worth
+// of items — never an independent per-project span computed from index or
+// masonry packing. Composition sizes are deliberately {1, 2, 3} so any
+// remaining tail (1, 2, or 3 projects) always resolves to an exact match.
+
+interface CompositionSlot {
+  span: string;
+  aspect: string;
+}
+
+interface Composition {
+  name: "feature" | "trio" | "banner" | "pair";
+  size: number;
+  slots: CompositionSlot[];
+}
+
+const FEATURE: Composition = {
+  name: "feature",
+  size: 2,
+  slots: [
+    {
+      span: "col-span-12 lg:col-span-8",
+      aspect: "aspect-[4/5] lg:aspect-[3/2]",
+    },
+    {
+      span: "col-span-12 lg:col-span-4",
+      aspect: "aspect-[4/5] lg:aspect-[3/4]",
+    },
+  ],
+};
+
+const TRIO: Composition = {
+  name: "trio",
+  size: 3,
+  slots: [
+    {
+      span: "col-span-12 sm:col-span-6 lg:col-span-4",
+      aspect: "aspect-[4/5] lg:aspect-[1/1]",
+    },
+    {
+      span: "col-span-12 sm:col-span-6 lg:col-span-4",
+      aspect: "aspect-[4/5] lg:aspect-[1/1]",
+    },
+    {
+      span: "col-span-12 sm:col-span-6 lg:col-span-4",
+      aspect: "aspect-[4/5] lg:aspect-[1/1]",
+    },
+  ],
+};
+
+const BANNER: Composition = {
+  name: "banner",
+  size: 1,
+  slots: [{ span: "col-span-12", aspect: "aspect-[4/5] lg:aspect-[21/9]" }],
+};
+
+const PAIR: Composition = {
+  name: "pair",
+  size: 2,
+  slots: [
+    {
+      span: "col-span-12 lg:col-span-5",
+      aspect: "aspect-[4/5] lg:aspect-[3/4]",
+    },
+    {
+      span: "col-span-12 lg:col-span-7",
+      aspect: "aspect-[4/5] lg:aspect-[4/3]",
+    },
+  ],
+};
+
+const COMPOSITION_SEQUENCE: Composition[] = [FEATURE, TRIO, BANNER, PAIR];
+const COMPOSITION_BY_SIZE: Record<number, Composition> = {
+  1: BANNER,
+  2: PAIR,
+  3: TRIO,
+};
+
+const IMPORTANCE_WEIGHT: Record<ProjectImportance, number> = {
+  primary: 2,
+  secondary: 1,
+  standard: 0,
+};
+
+export interface ComposedSlot {
+  project: Project;
+  span: string;
+  aspect: string;
+}
+
+/**
+ * Groups an ordered project list into a repeating sequence of handcrafted
+ * compositions and returns a flat, render-ready slot list (project + the
+ * span/aspect its position in that composition earns it). Within a
+ * multi-item composition, the higher-importance project takes the more
+ * prominent slot — placement is an art-directed decision, not array order.
+ */
+export function composeProjects(projects: Project[]): ComposedSlot[] {
+  const result: ComposedSlot[] = [];
+  let index = 0;
+  let step = 0;
+
+  while (index < projects.length) {
+    const remaining = projects.length - index;
+    let composition = COMPOSITION_SEQUENCE[step % COMPOSITION_SEQUENCE.length];
+
+    if (composition.size > remaining) {
+      composition = COMPOSITION_BY_SIZE[remaining] ?? BANNER;
+    }
+
+    const chunk = projects
+      .slice(index, index + composition.size)
+      .sort(
+        (a, b) =>
+          IMPORTANCE_WEIGHT[b.presentation.importance] -
+          IMPORTANCE_WEIGHT[a.presentation.importance]
+      );
+
+    chunk.forEach((project, slotIndex) => {
+      const slot = composition.slots[slotIndex] ?? composition.slots[0];
+      result.push({ project, span: slot.span, aspect: slot.aspect });
+    });
+
+    index += composition.size;
+    step++;
+  }
+
+  return result;
 }
