@@ -5,15 +5,38 @@ import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 import { gsap, ScrollTrigger } from "@/animations/gsap/gsap.config";
-import { DetailSection } from "@/components/portfolio/DetailSection";
+import { ColorSwatches } from "@/components/portfolio/ColorSwatches";
+import { KeyFeatures } from "@/components/portfolio/KeyFeatures";
 import { ProjectTile } from "@/components/portfolio/ProjectTile";
+import { SpecGrid, type SpecEntry } from "@/components/portfolio/SpecGrid";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-import { CATEGORY_LABELS, PROJECT_TYPE_LABELS } from "@/lib/portfolio";
 import type { Project } from "@/types/portfolio";
 
 interface ProjectDetailProps {
   project: Project;
   relatedProjects: Project[];
+}
+
+// A single ordered list covering every schema's spec fields. Interiors,
+// site plans, and elevations each only ever populate their own subset (see
+// the three schemas in src/types/portfolio.ts), so one fixed order is safe
+// for all three — SpecGrid drops whatever's empty, and the relative order
+// of any one project's populated fields always matches its schema's
+// intended order.
+function buildSpecEntries(project: Project): SpecEntry[] {
+  return [
+    { label: "Space Planning", items: project.spacePlanning },
+    { label: "Spatial Organization", items: project.spatialOrganization },
+    { label: "Facade Composition", items: project.facadeComposition },
+    { label: "Material Palette", items: project.materialPalette },
+    { label: "Interior Features", items: project.features },
+    { label: "Architectural Features", items: project.architecturalFeatures },
+    { label: "Lighting Features", items: project.lightingFeatures },
+    { label: "Decorative Elements", items: project.decorativeElements },
+    { label: "Landscape Features", items: project.landscapeFeatures },
+    { label: "Architectural Highlights", items: project.architecturalHighlights },
+    { label: "Planning Features", items: project.planningFeatures },
+  ];
 }
 
 export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) {
@@ -77,12 +100,15 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
     return () => ctx.revert();
   }, [prefersReducedMotion]);
 
-  const specs = [
-    { label: "Category", value: CATEGORY_LABELS[project.category] },
-    { label: "Project Type", value: PROJECT_TYPE_LABELS[project.projectType] },
-    { label: "Drawing Type", value: project.drawingType },
-    { label: "Style", value: project.style },
-  ].filter((spec) => spec.value);
+  const metaLine = [project.classification, project.subtype, project.drawingType, project.style]
+    .filter((value): value is string => Boolean(value))
+    .join(" · ");
+
+  const hasConcept = Boolean(
+    project.designConcept || project.planningConcept || project.designIntent
+  );
+
+  const specEntries = buildSpecEntries(project);
 
   return (
     <div ref={rootRef} className="bg-paper">
@@ -117,43 +143,103 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
 
       <div
         data-detail-title
-        className="flex translate-y-4 flex-col gap-4 px-8 py-12 opacity-0 sm:px-12 md:px-16 md:py-16"
+        className="flex translate-y-4 flex-col gap-3 px-8 py-12 opacity-0 sm:px-12 md:px-16 md:py-16"
       >
         <h1 className="font-display text-4xl text-ink sm:text-5xl md:text-6xl">
           {project.title}
         </h1>
-
-        {specs.length > 0 && (
-          <dl className="flex flex-wrap gap-x-10 gap-y-4">
-            {specs.map((spec) => (
-              <div key={spec.label}>
-                <dt className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
-                  {spec.label}
-                </dt>
-                <dd className="mt-1 font-sans text-sm uppercase tracking-[0.15em] text-ink">
-                  {spec.value}
-                </dd>
-              </div>
-            ))}
-          </dl>
+        {metaLine && (
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-stone">
+            {metaLine}
+          </p>
         )}
       </div>
 
-      <div className="px-8 sm:px-12 md:px-16">
-        <DetailSection label="Overview" text={project.overview} />
-        <DetailSection label="Design Concept" text={project.designConcept} />
-        <DetailSection label="Space Planning" text={project.spacePlanning} />
-        <DetailSection label="Material Palette" items={project.materialPalette} />
-        <DetailSection label="Color Palette" items={project.colorPalette} />
-        <DetailSection label="Features" items={project.features} />
-        <DetailSection label="Lighting Features" items={project.lightingFeatures} />
-        <DetailSection
-          label="Decorative Elements"
-          items={project.decorativeElements}
-        />
-        <DetailSection label="Key Features" items={project.keyFeatures} />
-        <DetailSection label="Visual Identity" text={project.visualIdentity} />
-        <DetailSection label="Keywords" items={project.keywords} />
+      <div className="flex flex-col gap-16 px-8 sm:px-12 md:gap-20 md:px-16">
+        {project.overview && (
+          <p className="max-w-2xl font-sans text-lg leading-relaxed text-ink/85 sm:text-xl">
+            {project.overview}
+          </p>
+        )}
+
+        {hasConcept && (
+          <div
+            data-detail-section
+            className="max-w-2xl translate-y-3 border-l border-ink/15 pl-6 opacity-0 sm:pl-8"
+          >
+            {project.designConcept && (
+              <p className="font-display text-xl italic leading-relaxed text-ink/85 sm:text-2xl">
+                {project.designConcept}
+              </p>
+            )}
+            {(project.planningConcept || project.designIntent) && (
+              <div className="flex flex-col gap-6">
+                {project.planningConcept && (
+                  <div>
+                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+                      Planning Concept
+                    </p>
+                    <p className="mt-2 font-display text-xl italic leading-relaxed text-ink/85 sm:text-2xl">
+                      {project.planningConcept}
+                    </p>
+                  </div>
+                )}
+                {project.designIntent && (
+                  <div>
+                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+                      Design Intent
+                    </p>
+                    <p className="mt-2 font-display text-xl italic leading-relaxed text-ink/85 sm:text-2xl">
+                      {project.designIntent}
+                    </p>
+                  </div>
+                )}
+              </div>
+            )}
+          </div>
+        )}
+
+        <ColorSwatches colors={project.colorPalette} />
+
+        <SpecGrid entries={specEntries} />
+
+        <KeyFeatures items={project.keyFeatures} />
+
+        {project.circulationStrategy && (
+          <div data-detail-section className="max-w-2xl translate-y-3 opacity-0">
+            <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+              Circulation Strategy
+            </p>
+            <p className="mt-3 font-sans text-base leading-relaxed text-ink/80">
+              {project.circulationStrategy}
+            </p>
+          </div>
+        )}
+
+        {project.visualIdentity && (
+          <p
+            data-detail-section
+            className="translate-y-3 text-center font-display text-2xl font-light text-ink/70 opacity-0 sm:text-3xl"
+          >
+            {project.visualIdentity}
+          </p>
+        )}
+
+        {project.keywords.length > 0 && (
+          <div
+            data-detail-section
+            className="flex translate-y-3 flex-wrap justify-center gap-x-4 gap-y-2 opacity-0"
+          >
+            {project.keywords.map((keyword) => (
+              <span
+                key={keyword}
+                className="font-sans text-[11px] uppercase tracking-[0.15em] text-stone/70"
+              >
+                {keyword}
+              </span>
+            ))}
+          </div>
+        )}
       </div>
 
       {project.galleryImages && project.galleryImages.length > 0 && (

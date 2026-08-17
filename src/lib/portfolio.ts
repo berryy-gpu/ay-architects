@@ -14,13 +14,15 @@ interface CreateProjectInput {
   category: ProjectCategory;
   projectType: ProjectType;
   heroImage: string;
+  classification?: string;
+  subtype?: string;
   presentation?: ProjectPresentation;
   drawingType?: string;
   style?: string;
   galleryImages?: string[];
   overview?: string;
   designConcept?: string;
-  spacePlanning?: string;
+  spacePlanning?: string[];
   materialPalette?: string[];
   colorPalette?: string[];
   features?: string[];
@@ -29,6 +31,15 @@ interface CreateProjectInput {
   keyFeatures?: string[];
   visualIdentity?: string;
   keywords?: string[];
+  planningConcept?: string;
+  designIntent?: string;
+  spatialOrganization?: string[];
+  architecturalHighlights?: string[];
+  planningFeatures?: string[];
+  circulationStrategy?: string;
+  facadeComposition?: string[];
+  architecturalFeatures?: string[];
+  landscapeFeatures?: string[];
 }
 
 const DEFAULT_PRESENTATION: ProjectPresentation = {
@@ -49,6 +60,8 @@ export function createProject(input: CreateProjectInput): Project {
     title: input.title,
     category: input.category,
     projectType: input.projectType,
+    classification: input.classification,
+    subtype: input.subtype,
     presentation: input.presentation ?? DEFAULT_PRESENTATION,
     heroImage: input.heroImage,
     drawingType: input.drawingType ?? "",
@@ -56,7 +69,7 @@ export function createProject(input: CreateProjectInput): Project {
     galleryImages: input.galleryImages,
     overview: input.overview ?? "",
     designConcept: input.designConcept ?? "",
-    spacePlanning: input.spacePlanning ?? "",
+    spacePlanning: input.spacePlanning ?? [],
     materialPalette: input.materialPalette ?? [],
     colorPalette: input.colorPalette ?? [],
     features: input.features ?? [],
@@ -65,6 +78,15 @@ export function createProject(input: CreateProjectInput): Project {
     keyFeatures: input.keyFeatures ?? [],
     visualIdentity: input.visualIdentity ?? "",
     keywords: input.keywords ?? [],
+    planningConcept: input.planningConcept,
+    designIntent: input.designIntent,
+    spatialOrganization: input.spatialOrganization,
+    architecturalHighlights: input.architecturalHighlights,
+    planningFeatures: input.planningFeatures,
+    circulationStrategy: input.circulationStrategy,
+    facadeComposition: input.facadeComposition,
+    architecturalFeatures: input.architecturalFeatures,
+    landscapeFeatures: input.landscapeFeatures,
   };
 }
 

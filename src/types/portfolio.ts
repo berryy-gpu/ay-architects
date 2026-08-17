@@ -41,6 +41,10 @@ export interface Project {
   title: string;
   category: ProjectCategory;
   projectType: ProjectType;
+  /** Free-text top-level classification (e.g. "Residential Interior") — distinct from the `category`/`projectType` enums used for filtering and routing. */
+  classification?: string;
+  /** Free-text project subtype (e.g. "Wardrobe Design", "Feature Wall") — finer-grained than `category`, not used for filtering. */
+  subtype?: string;
   presentation: ProjectPresentation;
   drawingType: string;
   style: string;
@@ -48,7 +52,7 @@ export interface Project {
   galleryImages?: string[];
   overview: string;
   designConcept: string;
-  spacePlanning: string;
+  spacePlanning: string[];
   materialPalette: string[];
   colorPalette: string[];
   features: string[];
@@ -57,4 +61,23 @@ export interface Project {
   keyFeatures: string[];
   visualIdentity: string;
   keywords: string[];
+
+  // --- Site-plan-only fields (architecturalplan-*) ---------------------
+  /** Site-plan counterpart to `designConcept` — the planning-level idea. */
+  planningConcept?: string;
+  /** Site-plan counterpart to `designConcept` — what the plan is meant to achieve. */
+  designIntent?: string;
+  /** Zones/uses across a site plan (e.g. "Residential Zone", "Central Plaza") — distinct from `spacePlanning`, which is interior-room planning. */
+  spatialOrganization?: string[];
+  architecturalHighlights?: string[];
+  planningFeatures?: string[];
+  circulationStrategy?: string;
+
+  // --- Elevation-only fields (elevation-*) ------------------------------
+  facadeComposition?: string[];
+  /** Elevation counterpart to `features` — building/façade features rather than interior-room features. */
+  architecturalFeatures?: string[];
+
+  // --- Shared by site plans and elevations ------------------------------
+  landscapeFeatures?: string[];
 }

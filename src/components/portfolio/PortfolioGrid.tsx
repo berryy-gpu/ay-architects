@@ -164,7 +164,11 @@ export function PortfolioGrid({
             y: 0,
             duration: 0.7,
             ease: "power2.out",
-            stagger: 0.12,
+            // `amount` (total spread, not a fixed per-item delay) keeps this
+            // bounded on the uncapped archive page, where a batch can be
+            // large — a fixed `each` delay would take seconds to finish
+            // once there are dozens of tiles.
+            stagger: { amount: 0.5, from: "start" },
           }),
       });
     }, grid);
@@ -211,7 +215,10 @@ export function PortfolioGrid({
         y: 0,
         duration: 0.65,
         ease: "power2.out",
-        stagger: 0.12,
+        // Amount-based, not `each` — a fixed per-item delay would make
+        // switching to a large category (or "All" on the archive page, up
+        // to 73 tiles) take many seconds to finish appearing.
+        stagger: { amount: 0.6, from: "start" },
       },
       "-=0.25"
     );
@@ -244,7 +251,9 @@ export function PortfolioGrid({
         y: 10,
         duration: 0.35,
         ease: "power2.in",
-        stagger: 0.025,
+        // Amount-based — see the enter timeline below for why a fixed
+        // `each` delay is unsafe once the archive page can have 73 tiles.
+        stagger: { amount: 0.25, from: "start" },
       },
       "<0.05"
     );
