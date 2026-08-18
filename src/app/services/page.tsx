@@ -2,10 +2,10 @@ import type { Metadata } from "next";
 
 import { ServicesCapabilityList } from "@/components/sections/ServicesCapabilityList";
 import { ServicesCaseStudyStrip } from "@/components/sections/ServicesCaseStudyStrip";
-import { ServicesCTA } from "@/components/sections/ServicesCTA";
 import { ServicesFAQ } from "@/components/sections/ServicesFAQ";
 import { ServicesHero } from "@/components/sections/ServicesHero";
 import { ServicesProcess } from "@/components/sections/ServicesProcess";
+import { CtaSection } from "@/components/ui/CtaSection";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -21,7 +21,12 @@ export default function ServicesPage() {
       <ServicesCapabilityList />
       <ServicesProcess />
       <ServicesFAQ />
-      <ServicesCTA />
+      <CtaSection
+        heading="Let's Discuss Your Project"
+        copy="Tell us about your project and we'll get back to you shortly."
+        buttonLabel="Get in Touch"
+        buttonHref="/contact"
+      />
     </main>
   );
 }

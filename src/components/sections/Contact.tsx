@@ -3,31 +3,10 @@
 import { useEffect, useRef } from "react";
 
 import { gsap } from "@/animations/gsap/gsap.config";
-import { contactInfo } from "@/config/contact";
+import { ContactMethodCard } from "@/components/ui/ContactMethodCard";
+import { CtaSection } from "@/components/ui/CtaSection";
+import { CONTACT_METHODS } from "@/config/contact";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
-
-interface ContactItem {
-  label: string;
-  value: string;
-  href?: string;
-  external?: boolean;
-}
-
-const CONTACT_ITEMS: ContactItem[] = [
-  {
-    label: "Email",
-    value: contactInfo.email,
-    href: `mailto:${contactInfo.email}`,
-  },
-  ...contactInfo.whatsapp.map((entry) => ({
-    label: entry.label,
-    value: entry.display,
-    href: entry.href,
-    external: true,
-  })),
-  { label: "Location", value: contactInfo.location },
-  { label: "Hours", value: contactInfo.hours },
-];
 
 export function Contact() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -41,7 +20,7 @@ export function Contact() {
 
     const ctx = gsap.context(() => {
       if (prefersReducedMotion) {
-        gsap.set("[data-contact-heading], [data-contact-item]", {
+        gsap.set("[data-contact-heading], [data-reveal-item]", {
           opacity: 1,
           y: 0,
         });
@@ -53,16 +32,16 @@ export function Contact() {
         y: 0,
         duration: 0.8,
         ease: "power2.out",
-        scrollTrigger: { trigger: section, start: "top 75%" },
+        scrollTrigger: { trigger: section, start: "top 75%", once: true },
       });
 
-      gsap.to("[data-contact-item]", {
+      gsap.to("[data-reveal-item]", {
         opacity: 1,
         y: 0,
-        duration: 0.7,
+        duration: 0.6,
         ease: "power2.out",
-        stagger: { amount: 0.35, from: "start" },
-        scrollTrigger: { trigger: section, start: "top 65%" },
+        stagger: { each: 0.07, from: "start" },
+        scrollTrigger: { trigger: section, start: "top 65%", once: true },
       });
     }, section);
 
@@ -70,51 +49,35 @@ export function Contact() {
   }, [prefersReducedMotion]);
 
   return (
-    <section
-      id="contact"
-      ref={sectionRef}
-      className="relative bg-background px-8 py-24 sm:px-12 md:px-16 md:py-32"
-    >
-      <div data-contact-heading className="translate-y-4 opacity-0">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/70">
-          Contact
-        </p>
-        <h2 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
-          Get in Touch
-        </h2>
-      </div>
+    <>
+      <section
+        id="contact"
+        ref={sectionRef}
+        className="relative bg-background px-8 py-24 sm:px-12 md:px-16 md:py-32"
+      >
+        <div data-contact-heading className="translate-y-4 opacity-0">
+          <p className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/70">
+            Contact
+          </p>
+          <h2 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
+            Get in Touch
+          </h2>
+        </div>
 
-      <dl className="mt-16 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 md:mt-20 lg:grid-cols-4">
-        {CONTACT_ITEMS.map((item) => (
-          <div
-            key={item.label}
-            data-contact-item
-            className="translate-y-3 opacity-0"
-          >
-            <dt className="font-sans text-[11px] uppercase tracking-[0.3em] text-foreground/70">
-              {item.label}
-            </dt>
-            <dd className="mt-2">
-              {item.href ? (
-                <a
-                  href={item.href}
-                  {...(item.external
-                    ? { target: "_blank", rel: "noopener noreferrer" }
-                    : {})}
-                  className="group relative inline-block font-sans text-base text-foreground sm:text-lg"
-                >
-                  {item.value}
-                  <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
-                </a>
-              ) : (
-                <span className="font-sans text-base text-foreground sm:text-lg">
-                  {item.value}
-                </span>
-              )}
-            </dd>
-          </div>
-        ))}
-      </dl>
-    </section>
+        <div className="mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 md:mt-20 md:grid-cols-3 xl:grid-cols-5">
+          {CONTACT_METHODS.map((method) => (
+            <ContactMethodCard key={method.label} method={method} animated />
+          ))}
+        </div>
+      </section>
+
+      <CtaSection
+        compact
+        heading="Ready to Bring Your Vision to Life?"
+        copy="Tell us about your project and we'll get back to you shortly."
+        buttonLabel="Contact Us"
+        buttonHref="/contact"
+      />
+    </>
   );
 }

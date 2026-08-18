@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 
 import { gsap } from "@/animations/gsap/gsap.config";
+import { Card } from "@/components/ui/Card";
 import { CAPABILITIES } from "@/config/services";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
@@ -18,11 +19,11 @@ export function ServicesCapabilityList() {
 
     const ctx = gsap.context(() => {
       if (prefersReducedMotion) {
-        gsap.set("[data-capability-group]", { opacity: 1, y: 0 });
+        gsap.set("[data-reveal-item]", { opacity: 1, y: 0 });
         return;
       }
 
-      gsap.to("[data-capability-group]", {
+      gsap.to("[data-reveal-item]", {
         opacity: 1,
         y: 0,
         duration: 0.6,
@@ -44,13 +45,9 @@ export function ServicesCapabilityList() {
         Capabilities
       </p>
 
-      <div className="mt-10 grid grid-cols-1 gap-x-8 gap-y-10 sm:grid-cols-2 lg:grid-cols-3">
+      <div className="mt-10 grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-3">
         {CAPABILITIES.map((capability) => (
-          <div
-            key={capability.group}
-            data-capability-group
-            className="translate-y-4 opacity-0"
-          >
+          <Card key={capability.group} animated>
             <h3 className="font-display text-lg text-foreground">
               {capability.group}
             </h3>
@@ -64,7 +61,7 @@ export function ServicesCapabilityList() {
                 </li>
               ))}
             </ul>
-          </div>
+          </Card>
         ))}
       </div>
     </section>

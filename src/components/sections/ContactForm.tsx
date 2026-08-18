@@ -2,6 +2,8 @@
 
 import { useState, type FormEvent } from "react";
 
+import { CTA_BUTTON_CLASSES } from "@/components/ui/ctaButtonClasses";
+import { ChevronDownIcon } from "@/components/ui/icons";
 import { SERVICES } from "@/config/services";
 
 const FORMSUBMIT_ENDPOINT =
@@ -35,7 +37,7 @@ const EMPTY_FORM: FormValues = {
 };
 
 const fieldClasses =
-  "w-full border-b border-accent-secondary/30 bg-transparent py-2 font-sans text-sm text-foreground placeholder:text-foreground/40 focus:border-accent focus:outline-none";
+  "w-full rounded-sm border border-accent-secondary/30 bg-background px-4 py-3 font-sans text-sm text-foreground placeholder:text-foreground/40 transition-[border-color,box-shadow] duration-200 focus:border-accent focus:outline-none focus:ring-2 focus:ring-accent/25";
 const labelClasses =
   "font-sans text-[11px] uppercase tracking-[0.2em] text-foreground/70";
 
@@ -111,18 +113,24 @@ export function ContactForm() {
 
   if (status === "success") {
     return (
-      <p
-        role="status"
-        aria-live="polite"
-        className="font-sans text-base text-foreground"
-      >
-        Thanks — we&rsquo;ll be in touch shortly.
-      </p>
+      <div className="rounded-sm border border-accent-secondary/20 bg-surface p-8 sm:p-10">
+        <p
+          role="status"
+          aria-live="polite"
+          className="font-sans text-base text-foreground"
+        >
+          Thanks — we&rsquo;ll be in touch shortly.
+        </p>
+      </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} noValidate className="flex flex-col gap-6">
+    <form
+      onSubmit={handleSubmit}
+      noValidate
+      className="relative flex flex-col gap-6 rounded-sm border border-accent-secondary/20 bg-surface p-6 sm:p-10"
+    >
       {/* Honeypots — visually hidden off-screen (not display:none, which
        * some bots specifically detect and skip), never focusable, never
        * announced. */}
@@ -220,20 +228,23 @@ export function ContactForm() {
           <label htmlFor="contact-project-type" className={labelClasses}>
             Project Type
           </label>
-          <select
-            id="contact-project-type"
-            name="projectType"
-            value={values.projectType}
-            onChange={(e) => updateField("projectType", e.target.value)}
-            className={`mt-2 ${fieldClasses}`}
-          >
-            <option value="">Select one (optional)</option>
-            {SERVICES.map((service) => (
-              <option key={service.slug} value={service.name}>
-                {service.name}
-              </option>
-            ))}
-          </select>
+          <div className="relative mt-2">
+            <select
+              id="contact-project-type"
+              name="projectType"
+              value={values.projectType}
+              onChange={(e) => updateField("projectType", e.target.value)}
+              className={`appearance-none pr-10 ${fieldClasses}`}
+            >
+              <option value="">Select one (optional)</option>
+              {SERVICES.map((service) => (
+                <option key={service.slug} value={service.name}>
+                  {service.name}
+                </option>
+              ))}
+            </select>
+            <ChevronDownIcon className="pointer-events-none absolute right-4 top-1/2 h-4 w-4 -translate-y-1/2 text-foreground/50" />
+          </div>
         </div>
       </div>
 
@@ -271,7 +282,7 @@ export function ContactForm() {
       <button
         type="submit"
         disabled={status === "submitting"}
-        className="mt-2 inline-flex w-fit items-center rounded-full bg-accent px-8 py-3 font-sans text-xs uppercase tracking-[0.25em] text-foreground transition-[filter] duration-300 ease-out hover:brightness-110 disabled:cursor-not-allowed disabled:opacity-60"
+        className={`mt-2 w-fit disabled:cursor-not-allowed disabled:opacity-60 ${CTA_BUTTON_CLASSES}`}
       >
         {status === "submitting" ? "Sending…" : "Send Message"}
       </button>

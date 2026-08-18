@@ -91,3 +91,27 @@ video {
     transform: scale(1.12);
   }
 }
+
+/* CtaSection's two ambient gradient blobs — slow, transform-only drift so
+ * the CTA background feels alive without ever being distracting. Neither
+ * class is applied under prefers-reduced-motion (the blobs render at their
+ * 0%/100% resting transform instead, i.e. the settled look). */
+@keyframes cta-drift-a {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(6%, 8%, 0) scale(1.08);
+  }
+}
+
+@keyframes cta-drift-b {
+  0%,
+  100% {
+    transform: translate3d(0, 0, 0) scale(1);
+  }
+  50% {
+    transform: translate3d(-8%, -6%, 0) scale(1.05);
+  }
+}
