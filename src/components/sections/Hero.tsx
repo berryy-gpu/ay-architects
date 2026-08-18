@@ -1,10 +1,15 @@
 "use client";
 
 import { motion, useMotionValue, useSpring } from "framer-motion";
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef } from "react";
 
 import { gsap } from "@/animations/gsap/gsap.config";
+import { MusicToggle } from "@/components/ui/MusicToggle";
+import { ScrollCue } from "@/components/ui/ScrollCue";
 import {
+  HERO_WORD_DURATION_SECONDS,
+  HERO_WORD_EASE,
+  HERO_WORD_STAGGER_SECONDS,
   LOADING_SCREEN_DURATION,
   LOADING_SCREEN_DURATION_REDUCED_MOTION,
 } from "@/constants/motion";
@@ -14,8 +19,6 @@ const PARALLAX_RANGE = 5;
 
 export function Hero() {
   const sectionRef = useRef<HTMLElement>(null);
-  const audioRef = useRef<HTMLAudioElement>(null);
-  const [isSoundOn, setIsSoundOn] = useState(false);
   const prefersReducedMotion = useMediaQuery(
     "(prefers-reduced-motion: reduce)"
   );
@@ -40,12 +43,16 @@ export function Hero() {
         tl.set("[data-hero-video]", { opacity: 1 })
           .set("[data-hero-line-primary]", { y: 0, letterSpacing: "0.2em" })
           .set("[data-hero-line-secondary]", { y: 0, letterSpacing: "0.4em" })
-          .set("[data-hero-statement], [data-hero-sound]", { y: 0 })
+          .set("[data-hero-statement]", { y: 0 })
           .to(
-            "[data-hero-line-primary], [data-hero-line-secondary], [data-hero-statement], [data-hero-sound]",
+            "[data-hero-line-primary], [data-hero-line-secondary], [data-hero-statement]",
             { opacity: 1, duration: 0.4 }
           );
       } else {
+        // Same word-stagger spec as the /services hero (constants/motion.ts)
+        // — "AY" / "ARCHITECTS" reveal as that shared cadence, so the two
+        // hero moments read as one site rather than two independently
+        // tuned ones.
         tl.to("[data-hero-video]", {
           opacity: 1,
           duration: 1.2,
@@ -57,8 +64,8 @@ export function Hero() {
               opacity: 1,
               y: 0,
               letterSpacing: "0.2em",
-              duration: 0.9,
-              ease: "power3.out",
+              duration: HERO_WORD_DURATION_SECONDS,
+              ease: HERO_WORD_EASE,
             },
             "<"
           )
@@ -68,19 +75,14 @@ export function Hero() {
               opacity: 1,
               y: 0,
               letterSpacing: "0.4em",
-              duration: 0.9,
-              ease: "power3.out",
+              duration: HERO_WORD_DURATION_SECONDS,
+              ease: HERO_WORD_EASE,
             },
-            "<+=0.12"
+            `<+=${HERO_WORD_STAGGER_SECONDS}`
           )
           .to(
             "[data-hero-statement]",
             { opacity: 1, y: 0, duration: 0.8, ease: "power2.out" },
-            "-=0.4"
-          )
-          .to(
-            "[data-hero-sound]",
-            { opacity: 1, duration: 0.6, ease: "power2.out" },
             "-=0.4"
           );
       }
@@ -104,19 +106,6 @@ export function Hero() {
     return () => window.removeEventListener("pointermove", handlePointerMove);
   }, [prefersReducedMotion, mouseX, mouseY]);
 
-  function toggleSound() {
-    const audio = audioRef.current;
-    if (!audio) return;
-
-    if (isSoundOn) {
-      audio.pause();
-      setIsSoundOn(false);
-    } else {
-      audio.play();
-      setIsSoundOn(true);
-    }
-  }
-
   return (
     <section
       id="hero"
@@ -135,11 +124,14 @@ export function Hero() {
         aria-hidden="true"
       />
 
+      {/* Bottom-up: legibility for the headline block. */}
       <div className="absolute inset-0 bg-gradient-to-t from-background-dark/55 via-background-dark/10 to-transparent" />
+      {/* Top-down: legibility for the nav sitting over the photo — the nav
+       * itself is unchanged on solid-color sections further down the page,
+       * this only darkens the hero's own top band. */}
+      <div className="absolute inset-x-0 top-0 h-40 bg-gradient-to-b from-background-dark/50 to-transparent sm:h-48" />
 
       <div className="pointer-events-none absolute inset-6 border border-foreground-on-dark/20 sm:inset-10" />
-
-      <audio ref={audioRef} src="/audio/hero-music.mp3" loop aria-hidden="true" />
 
       <motion.div
         style={{ x: springX, y: springY }}
@@ -168,23 +160,9 @@ export function Hero() {
         </p>
       </motion.div>
 
-      <button
-        type="button"
-        onClick={toggleSound}
-        data-hero-sound
-        aria-pressed={isSoundOn}
-        aria-label={
-          isSoundOn ? "Mute background sound" : "Play background sound"
-        }
-        className="absolute bottom-16 right-8 flex flex-col items-end gap-1 font-sans opacity-0 sm:bottom-20 sm:right-12 md:bottom-24 md:right-16"
-      >
-        <span className="text-[10px] uppercase tracking-[0.35em] text-foreground-on-dark/60">
-          Sound
-        </span>
-        <span className="text-xs uppercase tracking-[0.3em] text-foreground-on-dark">
-          {isSoundOn ? "On" : "Off"}
-        </span>
-      </button>
+      <ScrollCue prefersReducedMotion={prefersReducedMotion} />
+
+      <MusicToggle src="/audio/hero-music.mp3" />
     </section>
   );
 }

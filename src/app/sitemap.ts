@@ -20,6 +20,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       changeFrequency: "monthly",
       priority: 0.9,
     },
+    {
+      url: `${siteConfig.url}/contact`,
+      changeFrequency: "yearly",
+      priority: 0.6,
+    },
   ];
 
   const projectRoutes: MetadataRoute.Sitemap = ALL_PROJECTS.map((project) => ({

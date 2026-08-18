@@ -3,8 +3,18 @@
 import { useEffect, useRef } from "react";
 
 import { gsap, ScrollTrigger } from "@/animations/gsap/gsap.config";
+import { MusicToggle } from "@/components/ui/MusicToggle";
+import { ScrollCue } from "@/components/ui/ScrollCue";
 import { siteConfig } from "@/config/site";
+import {
+  HERO_WORD_DURATION_SECONDS,
+  HERO_WORD_STAGGER_SECONDS,
+  LOADING_SCREEN_DURATION,
+  LOADING_SCREEN_DURATION_REDUCED_MOTION,
+} from "@/constants/motion";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
+
+const HEADLINE_LINES = ["Architecture.", "Interiors.", "Visualisation."];
 
 export function ServicesHero() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -17,36 +27,41 @@ export function ServicesHero() {
     if (!section) return;
 
     const ctx = gsap.context(() => {
+      // Synced to LoadingScreen's own duration, same as the homepage
+      // Hero — LoadingScreen is global (mounted in layout.tsx) and stays
+      // fully opaque for ~2s on every route, then cross-fades out. Without
+      // this delay, this hero's content is already fully visible well
+      // before that cross-fade, so it shows through the loading screen's
+      // fading wordmark instead of appearing cleanly after it.
+      const tl = gsap.timeline({
+        delay: prefersReducedMotion
+          ? LOADING_SCREEN_DURATION_REDUCED_MOTION
+          : LOADING_SCREEN_DURATION,
+      });
+
       if (prefersReducedMotion) {
-        // A different, calmer path — not just a faster version of the
-        // motion one. Instant appearance, opacity only, no stagger.
-        gsap.set("[data-hero-line], [data-hero-rule]", {
+        tl.set("[data-hero-line], [data-hero-rule]", {
           opacity: 1,
           y: 0,
           scaleX: 1,
-        });
-        gsap.set("[data-positioning-line]", { opacity: 1 });
+        }).set("[data-positioning-line]", { opacity: 1 });
         return;
       }
 
-      // Mount entrance: headline lines, then the rule as a closing beat.
-      // Finishes well under 1.2s total.
-      const tl = gsap.timeline({ delay: 0.15 });
-
+      // Same shared word-stagger spec as the homepage hero
+      // (constants/motion.ts): 60ms between lines, 400ms per line.
       tl.to("[data-hero-line]", {
         opacity: 1,
         y: 0,
-        duration: 0.65,
+        duration: HERO_WORD_DURATION_SECONDS,
         ease: "power3.out",
-        stagger: 0.07,
+        stagger: HERO_WORD_STAGGER_SECONDS,
       }).to(
         "[data-hero-rule]",
         { scaleX: 1, duration: 0.4, ease: "power2.inOut" },
-        "-=0.25"
+        "-=0.15"
       );
 
-      // Positioning line: a separate, later beat — a plain scroll-triggered
-      // fade, not part of the hero's own entrance sequence.
       gsap.to("[data-positioning-line]", {
         opacity: 1,
         duration: 0.8,
@@ -66,15 +81,18 @@ export function ServicesHero() {
   return (
     <section
       ref={sectionRef}
-      className="relative flex min-h-[85vh] flex-col items-start justify-center bg-background-dark px-8 py-28 sm:px-12 md:px-16"
+      className="relative flex min-h-[90vh] flex-col items-start justify-center overflow-hidden bg-background-dark px-8 py-28 sm:px-12 md:px-16"
     >
-      <h1 className="font-display text-6xl leading-[0.95] text-foreground-on-dark sm:text-7xl md:text-8xl">
-        <span data-hero-line className="block translate-y-5 opacity-0">
-          Our
-        </span>
-        <span data-hero-line className="block translate-y-5 opacity-0">
-          Services
-        </span>
+      <h1 className="font-display text-6xl leading-[0.95] text-foreground-on-dark sm:text-8xl md:text-9xl">
+        {HEADLINE_LINES.map((line) => (
+          <span
+            key={line}
+            data-hero-line
+            className="block translate-y-5 opacity-0"
+          >
+            {line}
+          </span>
+        ))}
       </h1>
 
       <span
@@ -89,6 +107,10 @@ export function ServicesHero() {
       >
         {siteConfig.description}
       </p>
+
+      <ScrollCue prefersReducedMotion={prefersReducedMotion} />
+
+      <MusicToggle src="/audio/hero-music.mp3" />
     </section>
   );
 }

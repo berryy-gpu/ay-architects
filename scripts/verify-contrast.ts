@@ -143,14 +143,14 @@ interface AccentUsage {
 
 const ACCEPTED_ACCENT_USAGES: AccentUsage[] = [
   {
-    match: "ServicesList.tsx",
-    reason:
-      "decorative index numeral (01-05), aria-hidden — exempt from text contrast; redundant with the list's own visible order",
-  },
-  {
     match: "ServicesTeaser.tsx",
     reason:
       'eyebrow label "Services", real text but rendered inside the section\'s bg-background-dark — gold-on-forest is 5.68:1, checked above',
+  },
+  {
+    match: "MusicToggle.tsx",
+    reason:
+      'the "Music" label when playing — MusicToggle is only ever mounted on dark hero sections (bg-background-dark), gold-on-forest is 5.68:1, checked above',
   },
 ];
 

@@ -10,11 +10,14 @@ import {
 import { useLenis } from "@/hooks/useLenis";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
+// "Studio" intentionally omitted — the section it would point to still has
+// no real content (see project_missing_content memory). Don't relink it
+// until that content arrives; the section itself, if one gets built later
+// pending that content, isn't deleted by this, just not linked yet.
 const NAV_ITEMS = [
   { label: "Projects", href: "#projects" },
   { label: "Services", href: "/services" },
-  { label: "Studio", href: "#studio" },
-  { label: "Contact", href: "#contact" },
+  { label: "Contact", href: "/contact" },
 ];
 
 export function Navbar() {

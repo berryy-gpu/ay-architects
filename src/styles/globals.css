@@ -45,3 +45,49 @@ video {
   display: block;
   max-width: 100%;
 }
+
+/* Minimal equalizer pulse for MusicToggle's "playing" state — transform
+ * (scaleY) + opacity only, per the site's motion rules. Each bar gets a
+ * different animation-delay inline; prefers-reduced-motion is handled by
+ * not applying this class at all (a static icon swap instead), not by
+ * shortening it here. */
+@keyframes eq-pulse {
+  0%,
+  100% {
+    transform: scaleY(0.35);
+    opacity: 0.6;
+  }
+  50% {
+    transform: scaleY(1);
+    opacity: 1;
+  }
+}
+
+/* Hero scroll cue loop — transform + opacity only. Not applied at all under
+ * prefers-reduced-motion (the cue renders static instead), same pattern as
+ * eq-pulse above. */
+@keyframes scroll-cue {
+  0%,
+  100% {
+    transform: translateY(0);
+    opacity: 0.5;
+  }
+  50% {
+    transform: translateY(8px);
+    opacity: 1;
+  }
+}
+
+/* MusicToggle's one-time first-visit attention pulse — a *finite*
+ * iteration-count (set on the element, not here) is what makes this stop
+ * on its own rather than looping indefinitely. Not applied at all under
+ * prefers-reduced-motion. */
+@keyframes attention-pulse {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.12);
+  }
+}
