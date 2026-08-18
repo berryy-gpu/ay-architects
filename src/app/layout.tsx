@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 
+import { Footer } from "@/components/layout/Footer";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { Navbar } from "@/components/layout/Navbar";
 import { siteConfig } from "@/config/site";
@@ -29,6 +30,7 @@ export default function RootLayout({
           <LoadingScreen />
           <Navbar />
           {children}
+          <Footer />
         </RootProviders>
       </body>
     </html>
