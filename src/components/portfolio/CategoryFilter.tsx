@@ -34,15 +34,17 @@ export function CategoryFilter({
                 aria-pressed={isActive}
                 onClick={() => onChange(option.value)}
                 className={`group relative pb-2 font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 ${
-                  isActive ? "text-ink" : "text-stone hover:text-ink/70"
+                  isActive
+                    ? "text-foreground"
+                    : "text-foreground/70 hover:text-foreground"
                 }`}
               >
                 {option.label}
-                <span className="ml-2 tracking-normal text-stone/60">
+                <span className="ml-2 tracking-normal text-foreground/70">
                   {option.count}
                 </span>
                 <span
-                  className={`absolute bottom-0 left-0 h-px w-full origin-left bg-ink transition-transform duration-300 ease-out ${
+                  className={`absolute bottom-0 left-0 h-px w-full origin-left bg-foreground transition-transform duration-300 ease-out ${
                     isActive
                       ? "scale-x-100"
                       : "scale-x-0 group-hover:scale-x-100"

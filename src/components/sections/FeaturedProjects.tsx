@@ -75,7 +75,7 @@ export function FeaturedProjects() {
   }
 
   return (
-    <section id="featured" ref={sectionRef} className="relative bg-ink">
+    <section id="featured" ref={sectionRef} className="relative bg-background-dark">
       <div
         ref={(el) => {
           stopRefs.current[0] = el;
@@ -85,12 +85,12 @@ export function FeaturedProjects() {
       >
         <div
           data-stop-frame
-          className="sticky top-0 flex h-dvh flex-col items-center justify-center bg-ink px-8 text-center"
+          className="sticky top-0 flex h-dvh flex-col items-center justify-center bg-background-dark px-8 text-center"
         >
-          <h2 className="font-display text-4xl text-paper sm:text-5xl md:text-6xl">
+          <h2 className="font-display text-4xl text-foreground-on-dark sm:text-5xl md:text-6xl">
             Featured Projects
           </h2>
-          <p className="mt-4 font-sans text-xs uppercase tracking-[0.35em] text-stone">
+          <p className="mt-4 font-sans text-xs uppercase tracking-[0.35em] text-foreground-on-dark/70">
             A curated selection
           </p>
         </div>
@@ -107,7 +107,7 @@ export function FeaturedProjects() {
         >
           <div
             data-stop-frame
-            className="sticky top-0 h-dvh w-full overflow-hidden bg-ink"
+            className="sticky top-0 h-dvh w-full overflow-hidden bg-background-dark"
           >
             <Image
               src={project.heroImage}
@@ -116,8 +116,8 @@ export function FeaturedProjects() {
               sizes="100vw"
               className="object-cover"
             />
-            <div className="absolute inset-0 bg-gradient-to-t from-ink/50 via-transparent to-transparent" />
-            <p className="absolute bottom-10 left-8 font-sans text-xs uppercase tracking-[0.25em] text-paper/90 sm:left-12 md:left-16">
+            <div className="absolute inset-0 bg-gradient-to-t from-background-dark/50 via-transparent to-transparent" />
+            <p className="absolute bottom-10 left-8 font-sans text-xs uppercase tracking-[0.25em] text-foreground-on-dark/90 sm:left-12 md:left-16">
               {String(i + 1).padStart(2, "0")} — {project.title}
             </p>
           </div>
@@ -133,18 +133,18 @@ export function FeaturedProjects() {
       >
         <div
           data-stop-frame
-          className="sticky top-0 flex h-dvh flex-col items-center justify-center gap-4 bg-ink px-8 text-center"
+          className="sticky top-0 flex h-dvh flex-col items-center justify-center gap-4 bg-background-dark px-8 text-center"
         >
-          <span className="font-sans text-xs uppercase tracking-[0.3em] text-stone">
+          <span className="font-sans text-xs uppercase tracking-[0.3em] text-foreground-on-dark/70">
             {TOTAL} / {TOTAL}
           </span>
           <a
             href="#projects"
             onClick={goToPortfolio}
-            className="group relative font-display text-2xl text-paper sm:text-3xl"
+            className="group relative font-display text-2xl text-foreground-on-dark sm:text-3xl"
           >
             Explore the full portfolio
-            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-paper transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
+            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
           </a>
         </div>
       </div>

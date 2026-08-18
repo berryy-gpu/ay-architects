@@ -26,11 +26,11 @@ export function ColorSwatches({ colors }: ColorSwatchesProps) {
             <span
               aria-hidden="true"
               className={`h-9 w-9 rounded-full ${
-                isLightColorToken(hex) ? "border border-ink/15" : ""
+                isLightColorToken(hex) ? "border border-accent-secondary/30" : ""
               }`}
               style={{ backgroundColor: hex }}
             />
-            <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-stone">
+            <span className="font-sans text-[10px] uppercase tracking-[0.15em] text-foreground/70">
               {name}
             </span>
           </div>

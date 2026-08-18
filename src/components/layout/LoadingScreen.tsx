@@ -90,7 +90,7 @@ export function LoadingScreen() {
       ref={containerRef}
       role="status"
       aria-label={`Loading ${siteConfig.name}`}
-      className="fixed inset-0 z-[999] flex items-center justify-center bg-ink"
+      className="fixed inset-0 z-[999] flex items-center justify-center bg-background-dark"
     >
       <div
         data-loading-content
@@ -98,22 +98,22 @@ export function LoadingScreen() {
       >
         <p
           data-loading-wordmark
-          className="translate-y-2 font-display text-4xl tracking-[0.5em] text-paper opacity-0 sm:text-5xl md:text-6xl"
+          className="translate-y-2 font-display text-4xl tracking-[0.5em] text-foreground-on-dark opacity-0 sm:text-5xl md:text-6xl"
         >
           AY ARCHITECTS
         </p>
         <span
           data-loading-line
           aria-hidden="true"
-          className="relative mt-6 h-px w-24 origin-center scale-x-0 bg-stone"
+          className="relative mt-6 h-px w-24 origin-center scale-x-0 bg-accent-secondary"
         >
           <span
             data-loading-tick
-            className="absolute left-0 top-1/2 h-2 w-px -translate-y-1/2 bg-stone opacity-0"
+            className="absolute left-0 top-1/2 h-2 w-px -translate-y-1/2 bg-accent-secondary opacity-0"
           />
           <span
             data-loading-tick
-            className="absolute right-0 top-1/2 h-2 w-px -translate-y-1/2 bg-stone opacity-0"
+            className="absolute right-0 top-1/2 h-2 w-px -translate-y-1/2 bg-accent-secondary opacity-0"
           />
         </span>
       </div>

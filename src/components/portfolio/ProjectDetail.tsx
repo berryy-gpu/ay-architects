@@ -111,11 +111,11 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
   const specEntries = buildSpecEntries(project);
 
   return (
-    <div ref={rootRef} className="bg-paper">
+    <div ref={rootRef} className="bg-background">
       <div className="px-8 pt-28 sm:px-12 md:px-16">
         <Link
           href="/#projects"
-          className="group inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.25em] text-stone transition-colors duration-300 hover:text-ink"
+          className="group inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.25em] text-foreground/70 transition-colors duration-300 hover:text-foreground"
         >
           <span
             aria-hidden="true"
@@ -145,11 +145,11 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
         data-detail-title
         className="flex translate-y-4 flex-col gap-3 px-8 py-12 opacity-0 sm:px-12 md:px-16 md:py-16"
       >
-        <h1 className="font-display text-4xl text-ink sm:text-5xl md:text-6xl">
+        <h1 className="font-display text-4xl text-foreground sm:text-5xl md:text-6xl">
           {project.title}
         </h1>
         {metaLine && (
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-stone">
+          <p className="font-sans text-xs uppercase tracking-[0.2em] text-foreground/70">
             {metaLine}
           </p>
         )}
@@ -157,7 +157,7 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
 
       <div className="flex flex-col gap-16 px-8 sm:px-12 md:gap-20 md:px-16">
         {project.overview && (
-          <p className="max-w-2xl font-sans text-lg leading-relaxed text-ink/85 sm:text-xl">
+          <p className="max-w-2xl font-sans text-lg leading-relaxed text-foreground/85 sm:text-xl">
             {project.overview}
           </p>
         )}
@@ -165,10 +165,10 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
         {hasConcept && (
           <div
             data-detail-section
-            className="max-w-2xl translate-y-3 border-l border-ink/15 pl-6 opacity-0 sm:pl-8"
+            className="max-w-2xl translate-y-3 border-l border-accent/40 pl-6 opacity-0 sm:pl-8"
           >
             {project.designConcept && (
-              <p className="font-display text-xl italic leading-relaxed text-ink/85 sm:text-2xl">
+              <p className="font-display text-xl italic leading-relaxed text-foreground/85 sm:text-2xl">
                 {project.designConcept}
               </p>
             )}
@@ -176,20 +176,20 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
               <div className="flex flex-col gap-6">
                 {project.planningConcept && (
                   <div>
-                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-foreground/70">
                       Planning Concept
                     </p>
-                    <p className="mt-2 font-display text-xl italic leading-relaxed text-ink/85 sm:text-2xl">
+                    <p className="mt-2 font-display text-xl italic leading-relaxed text-foreground/85 sm:text-2xl">
                       {project.planningConcept}
                     </p>
                   </div>
                 )}
                 {project.designIntent && (
                   <div>
-                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+                    <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-foreground/70">
                       Design Intent
                     </p>
-                    <p className="mt-2 font-display text-xl italic leading-relaxed text-ink/85 sm:text-2xl">
+                    <p className="mt-2 font-display text-xl italic leading-relaxed text-foreground/85 sm:text-2xl">
                       {project.designIntent}
                     </p>
                   </div>
@@ -207,10 +207,10 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
 
         {project.circulationStrategy && (
           <div data-detail-section className="max-w-2xl translate-y-3 opacity-0">
-            <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+            <p className="font-sans text-[11px] uppercase tracking-[0.3em] text-foreground/70">
               Circulation Strategy
             </p>
-            <p className="mt-3 font-sans text-base leading-relaxed text-ink/80">
+            <p className="mt-3 font-sans text-base leading-relaxed text-foreground/80">
               {project.circulationStrategy}
             </p>
           </div>
@@ -219,7 +219,7 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
         {project.visualIdentity && (
           <p
             data-detail-section
-            className="translate-y-3 text-center font-display text-2xl font-light text-ink/70 opacity-0 sm:text-3xl"
+            className="translate-y-3 text-center font-display text-2xl font-light text-foreground/70 opacity-0 sm:text-3xl"
           >
             {project.visualIdentity}
           </p>
@@ -233,7 +233,7 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
             {project.keywords.map((keyword) => (
               <span
                 key={keyword}
-                className="font-sans text-[11px] uppercase tracking-[0.15em] text-stone/70"
+                className="font-sans text-[11px] uppercase tracking-[0.15em] text-foreground/70"
               >
                 {keyword}
               </span>
@@ -264,7 +264,7 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
 
       {relatedProjects.length > 0 && (
         <div className="px-8 py-20 sm:px-12 md:px-16 md:py-28">
-          <h2 className="font-display text-2xl text-ink sm:text-3xl">
+          <h2 className="font-display text-2xl text-foreground sm:text-3xl">
             Related Projects
           </h2>
           <div className="mt-10 grid grid-cols-12 gap-x-6 gap-y-16">

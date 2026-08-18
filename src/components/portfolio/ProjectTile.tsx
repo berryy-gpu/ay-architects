@@ -102,19 +102,19 @@ export function ProjectTile({ project, span, aspect }: ProjectTileProps) {
     >
       <div className="mb-4 flex items-start justify-between gap-4">
         <div>
-          <h3 className="font-display text-xl text-ink sm:text-2xl">
+          <h3 className="font-display text-xl text-foreground sm:text-2xl">
             {project.title}
           </h3>
           <div
             ref={metaRef}
-            className="mt-2 font-sans text-[11px] uppercase tracking-[0.2em] text-stone opacity-80"
+            className="mt-2 font-sans text-[11px] uppercase tracking-[0.2em] text-foreground/70 opacity-80"
           >
             {CATEGORY_LABELS[project.category]}
           </div>
         </div>
         <span
           ref={arrowRef}
-          className="mt-1 shrink-0 -translate-x-1 font-display text-xl text-ink opacity-0"
+          className="mt-1 shrink-0 -translate-x-1 font-display text-xl text-foreground opacity-0"
           aria-hidden="true"
         >
           →

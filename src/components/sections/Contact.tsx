@@ -73,13 +73,13 @@ export function Contact() {
     <section
       id="contact"
       ref={sectionRef}
-      className="relative bg-paper px-8 py-24 sm:px-12 md:px-16 md:py-32"
+      className="relative bg-background px-8 py-24 sm:px-12 md:px-16 md:py-32"
     >
       <div data-contact-heading className="translate-y-4 opacity-0">
-        <p className="font-sans text-xs uppercase tracking-[0.3em] text-stone">
+        <p className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/70">
           Contact
         </p>
-        <h2 className="mt-3 font-display text-4xl text-ink sm:text-5xl">
+        <h2 className="mt-3 font-display text-4xl text-foreground sm:text-5xl">
           Get in Touch
         </h2>
       </div>
@@ -91,7 +91,7 @@ export function Contact() {
             data-contact-item
             className="translate-y-3 opacity-0"
           >
-            <dt className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+            <dt className="font-sans text-[11px] uppercase tracking-[0.3em] text-foreground/70">
               {item.label}
             </dt>
             <dd className="mt-2">
@@ -101,13 +101,13 @@ export function Contact() {
                   {...(item.external
                     ? { target: "_blank", rel: "noopener noreferrer" }
                     : {})}
-                  className="group relative inline-block font-sans text-base text-ink sm:text-lg"
+                  className="group relative inline-block font-sans text-base text-foreground sm:text-lg"
                 >
                   {item.value}
-                  <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
+                  <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
                 </a>
               ) : (
-                <span className="font-sans text-base text-ink sm:text-lg">
+                <span className="font-sans text-base text-foreground sm:text-lg">
                   {item.value}
                 </span>
               )}

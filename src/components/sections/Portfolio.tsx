@@ -6,7 +6,7 @@ export function Portfolio() {
   return (
     <section
       id="projects"
-      className="relative bg-paper px-8 py-24 sm:px-12 md:px-16 md:py-32"
+      className="relative bg-background px-8 py-24 sm:px-12 md:px-16 md:py-32"
     >
       <PortfolioGrid
         limit={HOMEPAGE_LIMIT}

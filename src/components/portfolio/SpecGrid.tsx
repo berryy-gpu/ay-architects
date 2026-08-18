@@ -26,16 +26,16 @@ export function SpecGrid({ entries }: SpecGridProps) {
       {visible.map((entry) => (
         <div
           key={entry.label}
-          className="mb-8 break-inside-avoid rounded-sm border border-ink/10 p-6"
+          className="mb-8 break-inside-avoid rounded-sm border border-accent-secondary/25 p-6"
         >
-          <h3 className="font-sans text-[11px] uppercase tracking-[0.3em] text-stone">
+          <h3 className="font-sans text-[11px] uppercase tracking-[0.3em] text-foreground/70">
             {entry.label}
           </h3>
-          <ul className="mt-4 divide-y divide-ink/10">
+          <ul className="mt-4 divide-y divide-accent-secondary/20">
             {entry.items!.map((item) => (
               <li
                 key={item}
-                className="py-2 font-sans text-sm text-ink/80 first:pt-0 last:pb-0"
+                className="py-2 font-sans text-sm text-foreground/80 first:pt-0 last:pb-0"
               >
                 {item}
               </li>

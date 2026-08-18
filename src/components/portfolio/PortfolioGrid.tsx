@@ -263,15 +263,15 @@ export function PortfolioGrid({
     <div ref={gridRef}>
       <div data-portfolio-heading className="translate-y-4 opacity-0">
         {eyebrow && (
-          <p className="mb-3 font-sans text-xs uppercase tracking-[0.3em] text-stone">
+          <p className="mb-3 font-sans text-xs uppercase tracking-[0.3em] text-foreground/70">
             {eyebrow}
           </p>
         )}
         <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-          <h2 className="font-display text-4xl text-ink sm:text-5xl">
+          <h2 className="font-display text-4xl text-foreground sm:text-5xl">
             {headingLabel}
           </h2>
-          <span className="font-sans text-xs uppercase tracking-[0.2em] text-stone">
+          <span className="font-sans text-xs uppercase tracking-[0.2em] text-foreground/70">
             {filteredProjects.length}
             {isTruncated ? ` of ${allMatches.length}` : ""} Projects
           </span>
@@ -301,10 +301,10 @@ export function PortfolioGrid({
         <div className="mt-16 flex justify-center md:mt-20">
           <Link
             href={fullArchiveHref}
-            className="group relative font-sans text-xs uppercase tracking-[0.3em] text-ink"
+            className="group relative font-sans text-xs uppercase tracking-[0.3em] text-foreground"
           >
             View Full Archive
-            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-ink transition-transform duration-300 ease-out group-hover:scale-x-100" />
+            <span className="absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100" />
           </Link>
         </div>
       )}

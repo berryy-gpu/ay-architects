@@ -121,7 +121,7 @@ export function Hero() {
     <section
       id="hero"
       ref={sectionRef}
-      className="relative h-dvh w-full overflow-hidden bg-ink"
+      className="relative h-dvh w-full overflow-hidden bg-background-dark"
     >
       <video
         data-hero-video
@@ -135,9 +135,9 @@ export function Hero() {
         aria-hidden="true"
       />
 
-      <div className="absolute inset-0 bg-gradient-to-t from-ink/55 via-ink/10 to-transparent" />
+      <div className="absolute inset-0 bg-gradient-to-t from-background-dark/55 via-background-dark/10 to-transparent" />
 
-      <div className="pointer-events-none absolute inset-6 border border-paper/20 sm:inset-10" />
+      <div className="pointer-events-none absolute inset-6 border border-foreground-on-dark/20 sm:inset-10" />
 
       <audio ref={audioRef} src="/audio/hero-music.mp3" loop aria-hidden="true" />
 
@@ -148,13 +148,13 @@ export function Hero() {
         <div className="flex flex-col leading-[0.9]">
           <span
             data-hero-line-primary
-            className="translate-y-4 font-display text-6xl tracking-[0.5em] text-paper opacity-0 sm:text-7xl md:text-8xl lg:text-9xl"
+            className="translate-y-4 font-display text-6xl tracking-[0.5em] text-foreground-on-dark opacity-0 sm:text-7xl md:text-8xl lg:text-9xl"
           >
             AY
           </span>
           <span
             data-hero-line-secondary
-            className="mt-2 translate-y-4 font-display text-xl uppercase tracking-[0.5em] text-paper/90 opacity-0 sm:text-2xl md:text-3xl lg:text-4xl"
+            className="mt-2 translate-y-4 font-display text-xl uppercase tracking-[0.5em] text-foreground-on-dark/90 opacity-0 sm:text-2xl md:text-3xl lg:text-4xl"
           >
             Architects
           </span>
@@ -162,7 +162,7 @@ export function Hero() {
 
         <p
           data-hero-statement
-          className="max-w-sm translate-y-3 font-sans text-sm leading-relaxed text-paper/75 opacity-0 sm:max-w-md sm:text-base"
+          className="max-w-sm translate-y-3 font-sans text-sm leading-relaxed text-foreground-on-dark/75 opacity-0 sm:max-w-md sm:text-base"
         >
           Designing architecture that transcends time.
         </p>
@@ -178,10 +178,10 @@ export function Hero() {
         }
         className="absolute bottom-16 right-8 flex flex-col items-end gap-1 font-sans opacity-0 sm:bottom-20 sm:right-12 md:bottom-24 md:right-16"
       >
-        <span className="text-[10px] uppercase tracking-[0.35em] text-paper/60">
+        <span className="text-[10px] uppercase tracking-[0.35em] text-foreground-on-dark/60">
           Sound
         </span>
-        <span className="text-xs uppercase tracking-[0.3em] text-paper">
+        <span className="text-xs uppercase tracking-[0.3em] text-foreground-on-dark">
           {isSoundOn ? "On" : "Off"}
         </span>
       </button>

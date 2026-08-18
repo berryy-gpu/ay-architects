@@ -1,9 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  --color-ink: #0b0b0a;
-  --color-paper: #f6f4ef;
-  --color-stone: #8c887f;
+  /* AY Architects brand palette (2026-08-18 re-theme). Every color used for
+   * site chrome (backgrounds, text, accents, borders) must route through
+   * one of these — see scripts/verify-contrast.mjs for the WCAG pairs this
+   * is required to satisfy. This is unrelated to src/lib/colorTokens.ts,
+   * which maps unrelated *project-data* color names (e.g. "Walnut Brown")
+   * to swatch hexes for rendering a project's own Color Palette field. */
+  --color-background: #e9e0cf; /* Warm Alabaster */
+  --color-background-dark: #132b23; /* Dark Forest Green */
+  --color-foreground: #132b23; /* text on light backgrounds */
+  --color-foreground-on-dark: #e9e0cf; /* text on dark backgrounds */
+  --color-accent: #ba9b5f; /* Antique Gold — CTAs, dividers, icons; on light backgrounds this is 2.02:1 on its own and must NEVER be used as text there, only as non-text UI or as fill under --color-foreground text. On dark backgrounds it clears 5.68:1 and is safe as text. */
+  --color-accent-secondary: #5e775e; /* Sage Green — borders, dividers, badges/outlines only; 3.06-3.75:1, not safe as small text on either background */
+  --color-surface: color-mix(in oklab, #e9e0cf 96%, black 4%); /* Alabaster, 4% darkened — computed, not a hand-picked fifth color */
 }
 
 @theme inline {

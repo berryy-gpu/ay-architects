@@ -26,10 +26,10 @@ export default async function PortfolioArchivePage({
   const initialFilter = resolveFilter(category);
 
   return (
-    <main className="bg-paper px-8 pt-32 pb-24 sm:px-12 md:px-16 md:pt-40 md:pb-32">
+    <main className="bg-background px-8 pt-32 pb-24 sm:px-12 md:px-16 md:pt-40 md:pb-32">
       <Link
         href="/#projects"
-        className="group inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.25em] text-stone transition-colors duration-300 hover:text-ink"
+        className="group inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.25em] text-foreground/70 transition-colors duration-300 hover:text-foreground"
       >
         <span
           aria-hidden="true"

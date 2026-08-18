@@ -12,6 +12,7 @@ import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const NAV_ITEMS = [
   { label: "Projects", href: "#projects" },
+  { label: "Services", href: "/services" },
   { label: "Studio", href: "#studio" },
   { label: "Contact", href: "#contact" },
 ];
@@ -168,8 +169,13 @@ export function Navbar() {
   }
 
   function handleNavClick(event: React.MouseEvent<HTMLAnchorElement>, href: string) {
-    event.preventDefault();
     setIsMenuOpen(false);
+
+    // Real routes (e.g. "/services") aren't same-page anchors — let the
+    // browser navigate normally instead of intercepting as a scroll target.
+    if (!href.startsWith("#")) return;
+
+    event.preventDefault();
     // Lenis is stopped while the mobile menu is open (see the scroll-lock
     // effect above) and that effect hasn't re-run yet at this point in the
     // same tick — scrollTo() called while stopped is silently dropped, not
@@ -196,7 +202,7 @@ export function Navbar() {
         className={`fixed inset-x-0 top-0 z-40 opacity-0 ${
           prefersReducedMotion ? "" : "-translate-y-2"
         } transition-colors duration-500 ${
-          showDarkText ? "bg-paper/95" : "bg-transparent"
+          showDarkText ? "bg-background/95" : "bg-transparent"
         }`}
       >
         <div className="flex items-center justify-between px-8 py-6 sm:px-12 md:px-16">
@@ -204,7 +210,7 @@ export function Navbar() {
             href="#"
             onClick={handleBrandClick}
             className={`font-display text-lg tracking-[0.15em] transition-colors duration-300 hover:opacity-80 ${
-              showDarkText ? "text-ink" : "text-paper"
+              showDarkText ? "text-foreground" : "text-foreground-on-dark"
             }`}
           >
             AY Architects
@@ -221,14 +227,14 @@ export function Navbar() {
                 onClick={(event) => handleNavClick(event, item.href)}
                 className={`group relative font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-500 ${
                   showDarkText
-                    ? "text-ink/80 hover:text-ink"
-                    : "text-paper/80 hover:text-paper"
+                    ? "text-foreground/80 hover:text-foreground"
+                    : "text-foreground-on-dark/80 hover:text-foreground-on-dark"
                 }`}
               >
                 {item.label}
                 <span
                   className={`absolute -bottom-1 left-0 h-px w-full origin-left scale-x-0 transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100 ${
-                    showDarkText ? "bg-ink" : "bg-paper"
+                    showDarkText ? "bg-foreground" : "bg-foreground-on-dark"
                   }`}
                 />
               </a>
@@ -243,7 +249,7 @@ export function Navbar() {
             aria-controls="mobile-menu"
             aria-label="Open menu"
             className={`font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 md:hidden ${
-              showDarkText ? "text-ink" : "text-paper"
+              showDarkText ? "text-foreground" : "text-foreground-on-dark"
             }`}
           >
             Menu
@@ -257,7 +263,7 @@ export function Navbar() {
         role="dialog"
         aria-modal="true"
         aria-label="Navigation menu"
-        className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 bg-ink opacity-0 md:hidden ${
+        className={`fixed inset-0 z-50 flex flex-col items-center justify-center gap-8 bg-background-dark opacity-0 md:hidden ${
           isMenuOpen ? "visible" : "invisible"
         }`}
       >
@@ -267,7 +273,7 @@ export function Navbar() {
             href={item.href}
             onClick={(event) => handleNavClick(event, item.href)}
             data-menu-item
-            className="translate-y-3 font-display text-4xl uppercase tracking-[0.5em] text-paper opacity-0 transition-colors duration-300 hover:text-paper/70"
+            className="translate-y-3 font-display text-4xl uppercase tracking-[0.5em] text-foreground-on-dark opacity-0 transition-colors duration-300 hover:text-foreground-on-dark/70"
           >
             {item.label}
           </a>
@@ -277,7 +283,7 @@ export function Navbar() {
           type="button"
           onClick={closeMenu}
           data-menu-item
-          className="mt-4 translate-y-3 font-display text-4xl uppercase tracking-[0.5em] text-paper opacity-0 transition-colors duration-300 hover:text-paper/70"
+          className="mt-4 translate-y-3 font-display text-4xl uppercase tracking-[0.5em] text-foreground-on-dark opacity-0 transition-colors duration-300 hover:text-foreground-on-dark/70"
         >
           Close
         </button>
