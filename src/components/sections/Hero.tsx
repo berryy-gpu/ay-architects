@@ -4,7 +4,6 @@ import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useEffect, useRef } from "react";
 
 import { gsap } from "@/animations/gsap/gsap.config";
-import { MusicToggle } from "@/components/ui/MusicToggle";
 import { ScrollCue } from "@/components/ui/ScrollCue";
 import {
   HERO_WORD_DURATION_SECONDS,
@@ -161,8 +160,6 @@ export function Hero() {
       </motion.div>
 
       <ScrollCue prefersReducedMotion={prefersReducedMotion} />
-
-      <MusicToggle src="/audio/hero-music.mp3" />
     </section>
   );
 }

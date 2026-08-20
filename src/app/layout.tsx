@@ -3,6 +3,7 @@ import type { Metadata } from "next";
 import { Footer } from "@/components/layout/Footer";
 import { LoadingScreen } from "@/components/layout/LoadingScreen";
 import { Navbar } from "@/components/layout/Navbar";
+import { MusicToggle } from "@/components/ui/MusicToggle";
 import { siteConfig } from "@/config/site";
 import { fontVariables } from "@/config/fonts";
 import { RootProviders } from "@/providers/RootProviders";
@@ -41,6 +42,7 @@ export default function RootLayout({
           <Navbar />
           {children}
           <Footer />
+          <MusicToggle src="/audio/hero-music.mp3" />
         </RootProviders>
       </body>
     </html>

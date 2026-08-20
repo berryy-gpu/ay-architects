@@ -3,7 +3,6 @@
 import { useEffect, useRef } from "react";
 
 import { gsap, ScrollTrigger } from "@/animations/gsap/gsap.config";
-import { MusicToggle } from "@/components/ui/MusicToggle";
 import { ScrollCue } from "@/components/ui/ScrollCue";
 import { siteConfig } from "@/config/site";
 import {
@@ -109,8 +108,6 @@ export function ServicesHero() {
       </p>
 
       <ScrollCue prefersReducedMotion={prefersReducedMotion} />
-
-      <MusicToggle src="/audio/hero-music.mp3" />
     </section>
   );
 }

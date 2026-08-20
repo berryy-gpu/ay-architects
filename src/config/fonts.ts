@@ -1,4 +1,4 @@
-import { Fraunces, Inter } from "next/font/google";
+import { Fraunces, Montserrat } from "next/font/google";
 
 export const fontDisplay = Fraunces({
   subsets: ["latin"],
@@ -7,8 +7,9 @@ export const fontDisplay = Fraunces({
   axes: ["opsz", "SOFT", "WONK"],
 });
 
-export const fontSans = Inter({
+export const fontSans = Montserrat({
   subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700", "800"],
   variable: "--font-sans",
   display: "swap",
 });

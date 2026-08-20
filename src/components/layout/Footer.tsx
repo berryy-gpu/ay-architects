@@ -35,7 +35,18 @@ export function Footer() {
       </div>
 
       <p className="mt-8 font-sans text-[11px] uppercase tracking-[0.2em] text-foreground-on-dark/60">
-        © {year} {siteConfig.name}. All rights reserved.
+        © {year} {siteConfig.name}. All rights reserved. · Designed &amp;
+        Developed by{" "}
+        <a
+          href="https://portfolio-xi-lyart-5ol6xdyk1t.vercel.app/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="group relative text-foreground-on-dark/60 transition-colors duration-300 hover:text-foreground-on-dark"
+        >
+          Baran Haider
+          <span className="absolute -bottom-0.5 left-0 h-px w-full origin-left scale-x-0 bg-accent transition-transform duration-300 ease-out group-hover:scale-x-100 group-focus-visible:scale-x-100" />
+        </a>
+        .
       </p>
     </footer>
   );
