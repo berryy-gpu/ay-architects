@@ -15,6 +15,8 @@ interface CtaSectionProps {
   buttonExternal?: boolean;
   /** Shorter variant for placements after other content (e.g. /contact) rather than a page's sole closing statement. */
   compact?: boolean;
+  /** Small signature line under the button (e.g. /about's closing statement). Omit for the default (no line). */
+  footerNote?: string;
   className?: string;
 }
 
@@ -37,6 +39,7 @@ export function CtaSection({
   buttonHref,
   buttonExternal = false,
   compact = false,
+  footerNote,
   className = "",
 }: CtaSectionProps) {
   const sectionRef = useRef<HTMLElement>(null);
@@ -163,6 +166,11 @@ export function CtaSection({
           <Link href={buttonHref} className={`mt-2 ${CTA_BUTTON_CLASSES}`}>
             {buttonLabel}
           </Link>
+        )}
+        {footerNote && (
+          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.25em] text-foreground-on-dark/55">
+            {footerNote}
+          </p>
         )}
       </div>
     </section>

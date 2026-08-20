@@ -21,6 +21,11 @@ export default function sitemap(): MetadataRoute.Sitemap {
       priority: 0.9,
     },
     {
+      url: `${siteConfig.url}/about`,
+      changeFrequency: "monthly",
+      priority: 0.8,
+    },
+    {
       url: `${siteConfig.url}/contact`,
       changeFrequency: "yearly",
       priority: 0.6,
