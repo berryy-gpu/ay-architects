@@ -2,7 +2,6 @@ import type { Metadata } from "next";
 
 import { AboutApproach } from "@/components/sections/AboutApproach";
 import { AboutArchitect } from "@/components/sections/AboutArchitect";
-import { AboutDesign } from "@/components/sections/AboutDesign";
 import { AboutHero } from "@/components/sections/AboutHero";
 import { AboutLocation } from "@/components/sections/AboutLocation";
 import { AboutPractice } from "@/components/sections/AboutPractice";
@@ -11,6 +10,7 @@ import { AboutProcess } from "@/components/sections/AboutProcess";
 import { AboutStats } from "@/components/sections/AboutStats";
 import { AboutWork } from "@/components/sections/AboutWork";
 import { CtaSection } from "@/components/ui/CtaSection";
+import { RotatingWordLine } from "@/components/ui/RotatingWordLine";
 
 export const metadata: Metadata = {
   title: "About",
@@ -18,10 +18,13 @@ export const metadata: Metadata = {
     "AY Architects is a Lahore-based architecture and interior design practice led by Araiz Ahmed Khan — architecture, interiors, and 3D visualization under one roof.",
 };
 
+const ABOUT_ROTATING_WORDS = ["PURPOSE", "PRECISION", "CHARACTER", "BALANCE", "INTENT"];
+
 export default function AboutPage() {
   return (
     <main>
       <AboutHero />
+      <RotatingWordLine prefix="Designed with" words={ABOUT_ROTATING_WORDS} tone="light" />
       <AboutPractice />
       <AboutArchitect />
       <AboutPrinciples />
@@ -29,7 +32,6 @@ export default function AboutPage() {
       <AboutStats />
       <AboutLocation />
       <AboutProcess />
-      <AboutDesign />
       <AboutApproach />
       <CtaSection
         heading="have a space in mind?"

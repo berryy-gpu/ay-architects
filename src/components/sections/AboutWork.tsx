@@ -9,11 +9,28 @@ import { Card } from "@/components/ui/Card";
 import { WORK_AREAS } from "@/config/about";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
-/** Only the Architecture card gets a looping render clip — see Phase 0 inventory report. */
-const CARD_MEDIA: Record<string, { video: string; poster: string } | undefined> = {
+// Each card's confirmed render clip. Only Architecture has a real extracted
+// poster frame (elevation-screen-facade-villa-poster.jpg); there's no
+// ffmpeg/ffprobe available in this environment to extract first frames for
+// the other three, so each falls back to a real, thematically-matched
+// project photo already in the portfolio — not a generated frame. Swap
+// these for real extracted posters if that tooling becomes available.
+const CARD_MEDIA: Record<string, { video: string; poster: string }> = {
   Architecture: {
     video: "/videos/renders/elevation-screen-facade-villa.mp4",
     poster: "/images/renders/elevation-screen-facade-villa-poster.jpg",
+  },
+  "Interior Design": {
+    video: "/videos/renders/interior designigvid.mp4",
+    poster: "/images/interiors/kitchen/Luxury Marble Island Kitchen-01.jpeg",
+  },
+  "3D Visualization": {
+    video: "/videos/renders/3dvisualizationvid.mp4",
+    poster: "/images/elevations/The Monolith.jpeg",
+  },
+  "Architectural Planning": {
+    video: "/videos/renders/Architecturalplanningvid.mp4",
+    poster: "/images/architectural-plans/architecturalplan-01.jpeg",
   },
 };
 

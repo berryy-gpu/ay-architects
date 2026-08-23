@@ -10,7 +10,7 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "primary", aspect: "wide" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-01.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -46,7 +46,12 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-02.jpeg",
+    heroImage: "/images/interiors/tvlounge/Classic Luxury Family Lounge-01.jpeg",
+    galleryImages: [
+      "/images/interiors/tvlounge/Classic Luxury Family Lounge-01.jpeg",
+      "/images/interiors/tvlounge/Classic Luxury Family Lounge-02.jpeg",
+      "/images/interiors/tvlounge/Classic Luxury Family Lounge-03.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Classic",
     overview:
@@ -82,7 +87,7 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-03.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Classic",
     overview:
@@ -117,7 +122,12 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "secondary", aspect: "landscape" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-04.jpeg",
+    heroImage: "/images/interiors/tvlounge/Marble Feature TV Wall-01.jpeg",
+    galleryImages: [
+      "/images/interiors/tvlounge/Marble Feature TV Wall-01.jpeg",
+      "/images/interiors/tvlounge/Marble Feature TV Wall-02.jpeg",
+      "/images/interiors/tvlounge/Marble Feature TV Wall-03.jpeg",
+    ],
     drawingType: "Feature Wall",
     style: "Modern Luxury",
     overview:
@@ -152,7 +162,11 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-05.jpeg",
+    heroImage: "/images/interiors/tvlounge/Warm Contemporary Living Lounge-01.jpeg",
+    galleryImages: [
+      "/images/interiors/tvlounge/Warm Contemporary Living Lounge-01.jpeg",
+      "/images/interiors/tvlounge/Warm Contemporary Living Lounge-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Contemporary Modern",
     overview:
@@ -187,7 +201,12 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-06.jpeg",
+    heroImage: "/images/interiors/tvlounge/Luxury Marble Media Lounge-01.jpeg",
+    galleryImages: [
+      "/images/interiors/tvlounge/Luxury Marble Media Lounge-01.jpeg",
+      "/images/interiors/tvlounge/Luxury Marble Media Lounge-02.jpeg",
+      "/images/interiors/tvlounge/Luxury Marble Media Lounge-3.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -222,7 +241,7 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "secondary", aspect: "wide" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-07.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -257,7 +276,7 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-08.jpeg",
+    heroImage: "",
     drawingType: "Feature Wall",
     style: "Modern Luxury",
     overview:
@@ -292,7 +311,7 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "Accent Wall",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-09.jpeg",
+    heroImage: "",
     drawingType: "Wall Feature",
     style: "Modern Contemporary",
     overview:
@@ -327,7 +346,7 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-10.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -362,7 +381,7 @@ export const TV_LOUNGES: Project[] = [
     classification: "Residential Interior",
     subtype: "TV Lounge",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/tvlounge/tvlounge-11.jpeg",
+    heroImage: "",
     drawingType: "Feature Wall",
     style: "Modern Contemporary",
     overview:

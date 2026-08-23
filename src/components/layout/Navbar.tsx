@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useEffect, useRef, useState } from "react";
 
 import { gsap, ScrollTrigger } from "@/animations/gsap/gsap.config";
@@ -10,8 +11,12 @@ import {
 import { useLenis } from "@/hooks/useLenis";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
+// "Projects" was previously "#projects" — a same-page Lenis scroll target
+// that only ever worked from the homepage itself (and only scrolled to the
+// homepage's glimpse section, never actually reached /portfolio). Fixed to
+// the real route so it navigates correctly from every page.
 const NAV_ITEMS = [
-  { label: "Projects", href: "#projects" },
+  { label: "Projects", href: "/portfolio" },
   { label: "About", href: "/about" },
   { label: "Services", href: "/services" },
   { label: "Contact", href: "/contact" },
@@ -185,12 +190,8 @@ export function Navbar() {
     lenis?.scrollTo(href);
   }
 
-  function handleBrandClick(event: React.MouseEvent<HTMLAnchorElement>) {
-    event.preventDefault();
+  function handleBrandClick() {
     setIsMenuOpen(false);
-    // Same ordering fix as handleNavClick — see the comment there.
-    lenis?.start();
-    lenis?.scrollTo(0);
   }
 
   const showDarkText = isScrolled;
@@ -206,22 +207,22 @@ export function Navbar() {
         }`}
       >
         <div className="flex items-center justify-between px-8 py-6 sm:px-12 md:px-16">
-          <a
-            href="#"
+          <Link
+            href="/"
             onClick={handleBrandClick}
             className={`font-display text-lg tracking-[0.15em] transition-colors duration-300 hover:opacity-80 ${
               showDarkText ? "text-foreground" : "text-foreground-on-dark"
             }`}
           >
             AY Architects
-          </a>
+          </Link>
 
           <nav
             aria-label="Primary"
             className="hidden items-center gap-10 md:flex"
           >
             {NAV_ITEMS.map((item) => (
-              <a
+              <Link
                 key={item.href}
                 href={item.href}
                 onClick={(event) => handleNavClick(event, item.href)}
@@ -237,7 +238,7 @@ export function Navbar() {
                     showDarkText ? "bg-foreground" : "bg-foreground-on-dark"
                   }`}
                 />
-              </a>
+              </Link>
             ))}
           </nav>
 
@@ -268,7 +269,7 @@ export function Navbar() {
         }`}
       >
         {NAV_ITEMS.map((item) => (
-          <a
+          <Link
             key={item.href}
             href={item.href}
             onClick={(event) => handleNavClick(event, item.href)}
@@ -276,7 +277,7 @@ export function Navbar() {
             className="translate-y-3 font-display text-4xl uppercase tracking-[0.5em] text-foreground-on-dark opacity-0 transition-colors duration-300 hover:text-foreground-on-dark/70"
           >
             {item.label}
-          </a>
+          </Link>
         ))}
 
         <button

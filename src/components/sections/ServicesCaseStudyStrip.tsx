@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 import { gsap } from "@/animations/gsap/gsap.config";
+import { WatermarkedImage } from "@/components/ui/WatermarkedImage";
 import { SERVICES } from "@/config/services";
 import { getProjectBySlug } from "@/data/portfolio";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -54,7 +54,7 @@ export function ServicesCaseStudyStrip() {
             className="group relative min-h-[90vh] translate-y-8 overflow-hidden opacity-0"
           >
             <div className="absolute inset-0">
-              <Image
+              <WatermarkedImage
                 src={project.heroImage}
                 alt={project.title}
                 fill

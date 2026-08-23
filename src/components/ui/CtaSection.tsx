@@ -116,7 +116,7 @@ export function CtaSection({
   return (
     <section
       ref={sectionRef}
-      className={`relative overflow-hidden bg-background-dark px-8 text-center sm:px-12 md:px-16 ${
+      className={`relative overflow-hidden bg-background px-8 text-center sm:px-12 md:px-16 ${
         compact ? "py-20 md:py-24" : "py-28 md:py-36"
       } ${className}`}
     >
@@ -147,10 +147,10 @@ export function CtaSection({
         data-cta-content
         className="relative z-10 mx-auto flex max-w-2xl translate-y-4 flex-col items-center gap-6 opacity-0"
       >
-        <h2 className="font-display text-3xl text-foreground-on-dark sm:text-4xl md:text-5xl">
+        <h2 className="font-display text-3xl text-foreground sm:text-4xl md:text-5xl">
           {heading}
         </h2>
-        <p className="font-sans text-sm text-foreground-on-dark/75 sm:text-base">
+        <p className="font-sans text-sm text-foreground/80 sm:text-base">
           {copy}
         </p>
         {buttonExternal ? (
@@ -168,7 +168,7 @@ export function CtaSection({
           </Link>
         )}
         {footerNote && (
-          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.25em] text-foreground-on-dark/55">
+          <p className="mt-6 font-sans text-[11px] uppercase tracking-[0.25em] text-foreground/70">
             {footerNote}
           </p>
         )}

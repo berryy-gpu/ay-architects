@@ -15,7 +15,14 @@ export const executiveOffice: Project = createProject({
   classification: "Office Interior",
   subtype: "Executive Office",
   presentation: { importance: "secondary", aspect: "wide", featured: true },
-  heroImage: "/images/interiors/office/office-01.jpeg",
+  heroImage: "/images/interiors/office/Executive Director Office-01.jpeg",
+  galleryImages: [
+    "/images/interiors/office/Executive Director Office-01.jpeg",
+    "/images/interiors/office/Executive Director Office-02.jpeg",
+    "/images/interiors/office/Executive Director Office-03.jpeg",
+    "/images/interiors/office/Executive Director Office-04.jpeg",
+    "/images/interiors/office/Executive Director Office-05.jpeg",
+  ],
   drawingType: "Interior Perspective",
   style: "Modern Contemporary",
   overview:
@@ -84,7 +91,7 @@ export const OFFICES: Project[] = [
     classification: "Office Interior",
     subtype: "Custom Cabinetry",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/office/office-02.jpeg",
+    heroImage: "",
     drawingType: "Interior Detail",
     style: "Modern Minimalist",
     overview:
@@ -132,7 +139,7 @@ export const OFFICES: Project[] = [
     classification: "Office Interior",
     subtype: "Feature Wall Design",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/office/office-03.jpeg",
+    heroImage: "",
     drawingType: "Interior Detail",
     style: "Contemporary Minimalist",
     overview:
@@ -168,7 +175,7 @@ export const OFFICES: Project[] = [
     classification: "Office Interior",
     subtype: "Private Office",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/office/office-04.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Minimal Modern",
     overview:
@@ -213,7 +220,13 @@ export const OFFICES: Project[] = [
     classification: "Office Interior",
     subtype: "Executive Office",
     presentation: { importance: "secondary", aspect: "landscape" },
-    heroImage: "/images/interiors/office/office-05.jpeg",
+    heroImage: "/images/interiors/office/Executive Office Lounge-01.jpeg",
+    coverOrientation: "portrait",
+    galleryImages: [
+      "/images/interiors/office/Executive Office Lounge-01.jpeg",
+      "/images/interiors/office/Executive Office Lounge-02.jpeg",
+      "/images/interiors/office/Executive Office Lounge-03.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -273,7 +286,7 @@ export const OFFICES: Project[] = [
     classification: "Office Interior",
     subtype: "Conference Room",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/office/office-06.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Corporate",
     overview:
@@ -321,7 +334,7 @@ export const OFFICES: Project[] = [
     classification: "Office Interior",
     subtype: "Reception Lounge",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/office/office-07.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -363,7 +376,7 @@ export const OFFICES: Project[] = [
     classification: "Office Interior",
     subtype: "Executive Office",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/office/office-08.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Luxury Contemporary",
     overview:

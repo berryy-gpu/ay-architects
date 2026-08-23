@@ -1,7 +1,6 @@
 import type {
   PortfolioFilter,
   Project,
-  ProjectAspect,
   ProjectCategory,
   ProjectImportance,
   ProjectPresentation,
@@ -14,6 +13,7 @@ interface CreateProjectInput {
   category: ProjectCategory;
   projectType: ProjectType;
   heroImage: string;
+  coverOrientation?: "portrait";
   classification?: string;
   subtype?: string;
   presentation?: ProjectPresentation;
@@ -64,6 +64,7 @@ export function createProject(input: CreateProjectInput): Project {
     subtype: input.subtype,
     presentation: input.presentation ?? DEFAULT_PRESENTATION,
     heroImage: input.heroImage,
+    coverOrientation: input.coverOrientation,
     drawingType: input.drawingType ?? "",
     style: input.style ?? "",
     galleryImages: input.galleryImages,
@@ -102,7 +103,13 @@ export const CATEGORY_LABELS: Record<ProjectCategory, string> = {
   tvlounge: "TV Lounges",
   commercial: "Commercial",
   landscape: "Landscape",
+  exclusive: "Exclusives",
 };
+
+/** True when the project has a real cover photo to show — projects with no matching photography on disk are given heroImage: "" and should be hidden from grids/curation rather than rendering a broken image. */
+export function hasCoverImage(project: Project): boolean {
+  return Boolean(project.heroImage);
+}
 
 export const PROJECT_TYPE_LABELS: Record<ProjectType, string> = {
   "interior-design": "Interior Design",
@@ -131,6 +138,7 @@ export const PORTFOLIO_FILTERS: { value: PortfolioFilter; label: string }[] = [
   { value: "architecturalplan", label: CATEGORY_LABELS.architecturalplan },
   { value: "landscape", label: CATEGORY_LABELS.landscape },
   { value: "commercial", label: CATEGORY_LABELS.commercial },
+  { value: "exclusive", label: CATEGORY_LABELS.exclusive },
 ];
 
 const IMPORTANCE_SPAN: Record<ProjectImportance, string> = {
@@ -139,26 +147,19 @@ const IMPORTANCE_SPAN: Record<ProjectImportance, string> = {
   standard: "col-span-12 sm:col-span-6 lg:col-span-4",
 };
 
-const ASPECT_RATIO: Record<ProjectAspect, string> = {
-  wide: "aspect-[4/5] sm:aspect-[16/10] lg:aspect-[21/9]",
-  landscape: "aspect-[4/5] sm:aspect-[16/10] lg:aspect-[4/3]",
-  square: "aspect-[4/5] sm:aspect-[4/5] lg:aspect-[1/1]",
-  portrait: "aspect-[4/5] lg:aspect-[3/4]",
-};
-
 /**
  * The only place that turns a presentation config into actual CSS. The grid
- * and tiles never hardcode span/aspect themselves — change the look of every
- * "secondary" or every "wide" project across the whole archive by editing
- * the two tables above, without touching any project's data.
+ * and tiles never hardcode span themselves — change the look of every
+ * "primary" or "secondary" project across the whole archive by editing the
+ * table above, without touching any project's data. (Cover-image aspect is
+ * no longer art-directed per project — see ProjectTile, which sizes the
+ * image box from the photo's real orientation instead.)
  */
 export function resolvePresentation(presentation: ProjectPresentation): {
   span: string;
-  aspect: string;
 } {
   return {
     span: IMPORTANCE_SPAN[presentation.importance],
-    aspect: ASPECT_RATIO[presentation.aspect],
   };
 }
 
@@ -171,7 +172,6 @@ export function resolvePresentation(presentation: ProjectPresentation): {
 
 interface CompositionSlot {
   span: string;
-  aspect: string;
 }
 
 interface Composition {
@@ -184,14 +184,8 @@ const FEATURE: Composition = {
   name: "feature",
   size: 2,
   slots: [
-    {
-      span: "col-span-12 lg:col-span-8",
-      aspect: "aspect-[4/5] lg:aspect-[3/2]",
-    },
-    {
-      span: "col-span-12 lg:col-span-4",
-      aspect: "aspect-[4/5] lg:aspect-[3/4]",
-    },
+    { span: "col-span-12 lg:col-span-8" },
+    { span: "col-span-12 lg:col-span-4" },
   ],
 };
 
@@ -199,39 +193,24 @@ const TRIO: Composition = {
   name: "trio",
   size: 3,
   slots: [
-    {
-      span: "col-span-12 sm:col-span-6 lg:col-span-4",
-      aspect: "aspect-[4/5] lg:aspect-[1/1]",
-    },
-    {
-      span: "col-span-12 sm:col-span-6 lg:col-span-4",
-      aspect: "aspect-[4/5] lg:aspect-[1/1]",
-    },
-    {
-      span: "col-span-12 sm:col-span-6 lg:col-span-4",
-      aspect: "aspect-[4/5] lg:aspect-[1/1]",
-    },
+    { span: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { span: "col-span-12 sm:col-span-6 lg:col-span-4" },
+    { span: "col-span-12 sm:col-span-6 lg:col-span-4" },
   ],
 };
 
 const BANNER: Composition = {
   name: "banner",
   size: 1,
-  slots: [{ span: "col-span-12", aspect: "aspect-[4/5] lg:aspect-[21/9]" }],
+  slots: [{ span: "col-span-12" }],
 };
 
 const PAIR: Composition = {
   name: "pair",
   size: 2,
   slots: [
-    {
-      span: "col-span-12 lg:col-span-5",
-      aspect: "aspect-[4/5] lg:aspect-[3/4]",
-    },
-    {
-      span: "col-span-12 lg:col-span-7",
-      aspect: "aspect-[4/5] lg:aspect-[4/3]",
-    },
+    { span: "col-span-12 lg:col-span-5" },
+    { span: "col-span-12 lg:col-span-7" },
   ],
 };
 
@@ -251,15 +230,14 @@ const IMPORTANCE_WEIGHT: Record<ProjectImportance, number> = {
 export interface ComposedSlot {
   project: Project;
   span: string;
-  aspect: string;
 }
 
 /**
  * Groups an ordered project list into a repeating sequence of handcrafted
  * compositions and returns a flat, render-ready slot list (project + the
- * span/aspect its position in that composition earns it). Within a
- * multi-item composition, the higher-importance project takes the more
- * prominent slot — placement is an art-directed decision, not array order.
+ * span its position in that composition earns it). Within a multi-item
+ * composition, the higher-importance project takes the more prominent slot
+ * — placement is an art-directed decision, not array order.
  */
 export function composeProjects(projects: Project[]): ComposedSlot[] {
   const result: ComposedSlot[] = [];
@@ -284,7 +262,7 @@ export function composeProjects(projects: Project[]): ComposedSlot[] {
 
     chunk.forEach((project, slotIndex) => {
       const slot = composition.slots[slotIndex] ?? composition.slots[0];
-      result.push({ project, span: slot.span, aspect: slot.aspect });
+      result.push({ project, span: slot.span });
     });
 
     index += composition.size;

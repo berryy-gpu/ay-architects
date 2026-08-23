@@ -66,7 +66,7 @@ export const SERVICES: Service[] = [
       "Façade design",
       "Corporate interior design",
     ],
-    caseStudySlug: "elevation-13",
+    caseStudySlug: "the-threshold",
     portfolioCategory: "office",
   },
   {
@@ -79,7 +79,7 @@ export const SERVICES: Service[] = [
       "Day/night exterior elevations",
       "Walkthrough-ready visuals",
     ],
-    caseStudySlug: "elevation-01",
+    caseStudySlug: "the-black-frame",
     portfolioCategory: "elevation",
   },
 ];

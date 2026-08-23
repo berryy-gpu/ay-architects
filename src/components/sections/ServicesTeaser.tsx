@@ -1,10 +1,10 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 import { gsap } from "@/animations/gsap/gsap.config";
+import { WatermarkedImage } from "@/components/ui/WatermarkedImage";
 import { TEASER_SERVICES } from "@/config/services";
 import { getProjectBySlug } from "@/data/portfolio";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -83,7 +83,7 @@ export function ServicesTeaser() {
               data-teaser-tile
               className="group relative block aspect-[4/5] translate-y-4 overflow-hidden opacity-0"
             >
-              <Image
+              <WatermarkedImage
                 src={project.heroImage}
                 alt={project.title}
                 fill

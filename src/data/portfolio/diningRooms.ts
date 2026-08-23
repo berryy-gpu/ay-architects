@@ -10,7 +10,11 @@ export const DINING_ROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Dining Room",
     presentation: { importance: "secondary", aspect: "landscape" },
-    heroImage: "/images/interiors/diningroom/diningroom-01.jpeg",
+    heroImage: "/images/interiors/diningroom/Luxury Classical Dining Hall-01.jpeg",
+    galleryImages: [
+      "/images/interiors/diningroom/Luxury Classical Dining Hall-01.jpeg",
+      "/images/interiors/diningroom/Luxury Classical Dining Hall-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Luxury Classical",
     overview:
@@ -58,7 +62,11 @@ export const DINING_ROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Living & Dining Area",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/diningroom/diningroom-02.jpeg",
+    heroImage: "/images/interiors/diningroom/Grand Living & Dining Suite-01.jpeg",
+    galleryImages: [
+      "/images/interiors/diningroom/Grand Living & Dining Suite-01.jpeg",
+      "/images/interiors/diningroom/Grand Living & Dining Suite-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Luxury Classical",
     overview:
@@ -94,7 +102,11 @@ export const DINING_ROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Living & Dining Area",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/diningroom/diningroom-03.jpeg",
+    heroImage: "/images/interiors/diningroom/Contemporary Luxury Dining Lounge-01.jpeg",
+    galleryImages: [
+      "/images/interiors/diningroom/Contemporary Luxury Dining Lounge-01.jpeg",
+      "/images/interiors/diningroom/Contemporary Luxury Dining Lounge-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -130,7 +142,7 @@ export const DINING_ROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Dining Room",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/diningroom/diningroom-04.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -166,7 +178,12 @@ export const DINING_ROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Dining Room",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/diningroom/diningroom-05.jpeg",
+    heroImage: "/images/interiors/diningroom/Modern Elegant Dining Space-01.jpeg",
+    galleryImages: [
+      "/images/interiors/diningroom/Modern Elegant Dining Space-01.jpeg",
+      "/images/interiors/diningroom/Modern Elegant Dining Space-02.jpeg",
+      "/images/interiors/diningroom/Modern Elegant Dining Space-03.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Contemporary Modern",
     overview:

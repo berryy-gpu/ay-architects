@@ -11,7 +11,8 @@ export type ProjectCategory =
   | "kitchen"
   | "tvlounge"
   | "commercial"
-  | "landscape";
+  | "landscape"
+  | "exclusive";
 
 export type PortfolioFilter = "all" | ProjectType | ProjectCategory;
 
@@ -49,6 +50,8 @@ export interface Project {
   drawingType: string;
   style: string;
   heroImage: string;
+  /** Set only when the cover photo (heroImage) is portrait — grid/tile rendering uses this to avoid force-cropping it into a landscape box. Undefined means landscape (the common case). */
+  coverOrientation?: "portrait";
   galleryImages?: string[];
   overview: string;
   designConcept: string;

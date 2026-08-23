@@ -1,11 +1,11 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useRef } from "react";
 
 import { gsap } from "@/animations/gsap/gsap.config";
+import { WatermarkedImage } from "@/components/ui/WatermarkedImage";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 import { CATEGORY_LABELS, resolvePresentation } from "@/lib/portfolio";
 import type { Project } from "@/types/portfolio";
@@ -16,7 +16,16 @@ interface ProjectTileProps {
   aspect?: string;
 }
 
-export function ProjectTile({ project, span, aspect }: ProjectTileProps) {
+// Every cover photo renders in one of two fixed, consistent boxes rather
+// than the old per-project art-directed ratio (1/1, 21/9, 3/4, ...), which
+// forced arbitrary crops. Landscape covers (the large majority — see the
+// Phase 0 audit) get a 4:3 box with object-cover; the handful of genuinely
+// portrait-only covers (project.coverOrientation === "portrait") get a 3:4
+// box with object-contain instead, so nothing is cropped off.
+const LANDSCAPE_BOX = "aspect-[4/3]";
+const PORTRAIT_BOX = "aspect-[3/4] bg-surface";
+
+export function ProjectTile({ project, span }: ProjectTileProps) {
   const linkRef = useRef<HTMLAnchorElement>(null);
   const frameRef = useRef<HTMLDivElement>(null);
   const arrowRef = useRef<HTMLSpanElement>(null);
@@ -28,7 +37,8 @@ export function ProjectTile({ project, span, aspect }: ProjectTileProps) {
 
   const resolved = resolvePresentation(project.presentation);
   const spanClass = span ?? resolved.span;
-  const aspectClass = aspect ?? resolved.aspect;
+  const isPortraitCover = project.coverOrientation === "portrait";
+  const aspectClass = isPortraitCover ? PORTRAIT_BOX : LANDSCAPE_BOX;
   const href = `/portfolio/${project.slug}`;
 
   function handleEnter() {
@@ -125,12 +135,12 @@ export function ProjectTile({ project, span, aspect }: ProjectTileProps) {
         ref={frameRef}
         className={`relative w-full overflow-hidden ${aspectClass}`}
       >
-        <Image
+        <WatermarkedImage
           src={project.heroImage}
           alt={project.title}
           fill
           sizes="(min-width: 1024px) 50vw, 100vw"
-          className="object-cover"
+          className={isPortraitCover ? "object-contain" : "object-cover"}
         />
       </div>
     </Link>

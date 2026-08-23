@@ -1,12 +1,12 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
 
 import { gsap, ScrollTrigger } from "@/animations/gsap/gsap.config";
 import { ColorSwatches } from "@/components/portfolio/ColorSwatches";
 import { KeyFeatures } from "@/components/portfolio/KeyFeatures";
+import { ProjectImageSlider } from "@/components/portfolio/ProjectImageSlider";
 import { ProjectTile } from "@/components/portfolio/ProjectTile";
 import { SpecGrid, type SpecEntry } from "@/components/portfolio/SpecGrid";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
@@ -112,7 +112,7 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
 
   return (
     <div ref={rootRef} className="bg-background">
-      <div className="px-8 pt-28 sm:px-12 md:px-16">
+      <div className="px-[6%] pt-28 sm:px-[8%] lg:px-[10%] xl:px-[11%]">
         <Link
           href="/#projects"
           className="group inline-flex items-center gap-2 font-sans text-xs uppercase tracking-[0.25em] text-foreground/70 transition-colors duration-300 hover:text-foreground"
@@ -127,41 +127,54 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
         </Link>
       </div>
 
-      <div
-        data-detail-hero
-        className="relative mt-8 h-[70vh] w-full scale-[1.04] overflow-hidden opacity-0 sm:h-[80vh]"
-      >
-        <Image
-          src={project.heroImage}
-          alt={project.title}
-          fill
-          priority
-          sizes="100vw"
-          className="object-cover"
-        />
+      {/* Two-column hero: image (~45% of content width) left, generous
+          gutter, fixed title/meta/description (~30%) right — matching the
+          measured reference proportions. Stacks on mobile/tablet. */}
+      <div className="mt-8 px-[6%] sm:px-[8%] lg:flex lg:justify-between lg:px-[10%] xl:px-[11%]">
+        <div className="lg:w-[45%]">
+          {project.heroImage ? (
+            <ProjectImageSlider
+              images={
+                project.galleryImages && project.galleryImages.length > 0
+                  ? project.galleryImages
+                  : [project.heroImage]
+              }
+              title={project.title}
+              className="scale-[1.04] opacity-0"
+            />
+          ) : (
+            <div
+              data-detail-hero
+              className="relative flex h-[40vh] w-full scale-[1.04] items-center justify-center overflow-hidden bg-surface opacity-0 sm:h-[50vh]"
+            >
+              <p className="font-sans text-xs uppercase tracking-[0.3em] text-foreground/50">
+                Photography coming soon
+              </p>
+            </div>
+          )}
+        </div>
+
+        <div
+          data-detail-title
+          className="mt-10 flex translate-y-4 flex-col gap-4 opacity-0 lg:mt-0 lg:w-[30%] lg:self-center"
+        >
+          <h1 className="font-sans text-sm font-bold uppercase tracking-tight text-foreground sm:text-base">
+            {project.title}
+          </h1>
+          {metaLine && (
+            <p className="font-sans text-[11px] uppercase tracking-[0.2em] text-foreground/60">
+              {metaLine}
+            </p>
+          )}
+          {project.overview && (
+            <p className="font-sans text-sm font-light leading-relaxed text-foreground/75">
+              {project.overview}
+            </p>
+          )}
+        </div>
       </div>
 
-      <div
-        data-detail-title
-        className="flex translate-y-4 flex-col gap-3 px-8 py-12 opacity-0 sm:px-12 md:px-16 md:py-16"
-      >
-        <h1 className="font-display text-4xl text-foreground sm:text-5xl md:text-6xl">
-          {project.title}
-        </h1>
-        {metaLine && (
-          <p className="font-sans text-xs uppercase tracking-[0.2em] text-foreground/70">
-            {metaLine}
-          </p>
-        )}
-      </div>
-
-      <div className="flex flex-col gap-16 px-8 sm:px-12 md:gap-20 md:px-16">
-        {project.overview && (
-          <p className="max-w-2xl font-sans text-lg leading-relaxed text-foreground/85 sm:text-xl">
-            {project.overview}
-          </p>
-        )}
-
+      <div className="flex flex-col gap-16 px-8 pt-16 sm:px-12 md:gap-20 md:px-16 md:pt-20">
         {hasConcept && (
           <div
             data-detail-section
@@ -241,26 +254,6 @@ export function ProjectDetail({ project, relatedProjects }: ProjectDetailProps) 
           </div>
         )}
       </div>
-
-      {project.galleryImages && project.galleryImages.length > 0 && (
-        <div className="mt-16 flex flex-col gap-6 px-8 sm:px-12 md:px-16">
-          {project.galleryImages.map((image) => (
-            <div
-              key={image}
-              data-detail-section
-              className="relative h-[60vh] w-full overflow-hidden opacity-0"
-            >
-              <Image
-                src={image}
-                alt={project.title}
-                fill
-                sizes="100vw"
-                className="object-cover"
-              />
-            </div>
-          ))}
-        </div>
-      )}
 
       {relatedProjects.length > 0 && (
         <div className="px-8 py-20 sm:px-12 md:px-16 md:py-28">

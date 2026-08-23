@@ -115,3 +115,44 @@ video {
     transform: translate3d(-8%, -6%, 0) scale(1.05);
   }
 }
+
+/* LogoMarquee's continuous horizontal loop — the track renders the logo
+ * list twice back-to-back, so translating exactly -50% (one list's worth
+ * of width) lands back on an identical visual state, making the loop
+ * seamless. Not applied at all under prefers-reduced-motion (a static
+ * wrapped row renders instead — see LogoMarquee.tsx). */
+@keyframes marquee-scroll {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+/* Desktop-only pause-on-hover for the logo marquee, kept in plain CSS
+ * (rather than a Tailwind arbitrary-hover class) since it targets a
+ * dynamically-durationed inline `animation` set from JS. */
+@media (hover: hover) {
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+}
+
+/* RotatingWordLine's continuous vertical loop. Every placement uses a
+ * 5-word list (see the three usages) rendered twice back-to-back (10 rows
+ * total in the animated track), each row 1/10th of the track's own height —
+ * percentages in `transform` resolve against the animated element's own
+ * bounding box, not its parent. Starting 1 row up (-10%, so the first word
+ * sits centered in the 3-row viewport window) and ending exactly 5 rows
+ * further down (-60%) lands on the same visual state as the start, so the
+ * loop is seamless. Not applied under prefers-reduced-motion — that path
+ * cross-fades between words on a timer instead (see RotatingWordLine.tsx). */
+@keyframes word-scroll {
+  from {
+    transform: translateY(-10%);
+  }
+  to {
+    transform: translateY(-60%);
+  }
+}

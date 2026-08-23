@@ -10,7 +10,12 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "primary", aspect: "wide" },
-    heroImage: "/images/interiors/kitchen/kitchen-01.jpeg",
+    heroImage: "/images/interiors/kitchen/Luxury Marble Island Kitchen-01.jpeg",
+    galleryImages: [
+      "/images/interiors/kitchen/Luxury Marble Island Kitchen-01.jpeg",
+      "/images/interiors/kitchen/Luxury Marble Island Kitchen-02.jpeg",
+      "/images/interiors/kitchen/Luxury Marble Island Kitchen-03.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -87,7 +92,7 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/kitchen/kitchen-02.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -158,7 +163,7 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/kitchen/kitchen-03.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Contemporary Luxury",
     overview:
@@ -217,7 +222,11 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "secondary", aspect: "landscape" },
-    heroImage: "/images/interiors/kitchen/kitchen-04.jpeg",
+    heroImage: "/images/interiors/kitchen/Midnight Blue Designer Kitchen-01.jpeg",
+    galleryImages: [
+      "/images/interiors/kitchen/Midnight Blue Designer Kitchen-01.jpeg",
+      "/images/interiors/kitchen/Midnight Blue Designer Kitchen-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -282,7 +291,7 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/kitchen/kitchen-05.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -347,7 +356,12 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/kitchen/kitchen-06.jpeg",
+    heroImage: "/images/interiors/kitchen/Minimal Walnut Kitchen-01.jpeg",
+    galleryImages: [
+      "/images/interiors/kitchen/Minimal Walnut Kitchen-01.jpeg",
+      "/images/interiors/kitchen/Minimal Walnut Kitchen-02.jpeg",
+      "/images/interiors/kitchen/Minimal Walnut Kitchen-03.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -407,7 +421,7 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "secondary", aspect: "wide" },
-    heroImage: "/images/interiors/kitchen/kitchen-07.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Contemporary Luxury",
     overview:
@@ -472,7 +486,11 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/kitchen/kitchen-08.jpeg",
+    heroImage: "/images/interiors/kitchen/Elegant Gloss Kitchen-01.jpeg",
+    galleryImages: [
+      "/images/interiors/kitchen/Elegant Gloss Kitchen-01.jpeg",
+      "/images/interiors/kitchen/Elegant Gloss Kitchen-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -531,7 +549,7 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/kitchen/kitchen-09.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -585,7 +603,7 @@ export const KITCHENS: Project[] = [
     classification: "Residential Interior",
     subtype: "Kitchen",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/kitchen/kitchen-10.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:

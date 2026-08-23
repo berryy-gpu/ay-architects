@@ -17,7 +17,12 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bedroom",
     presentation: { importance: "primary", aspect: "wide" },
-    heroImage: "/images/interiors/bedroom/bedroom-01.jpeg",
+    heroImage: "/images/interiors/bedroom/Minimal Contemporary Bedroom-01.jpeg",
+    coverOrientation: "portrait",
+    galleryImages: [
+      "/images/interiors/bedroom/Minimal Contemporary Bedroom-01.jpeg",
+      "/images/interiors/bedroom/Minimal Contemporary Bedroom-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -60,7 +65,11 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bedroom",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/bedroom/bedroom-02.jpeg",
+    heroImage: "/images/interiors/bedroom/Elegant Minimal Master Bedroom-01.jpeg",
+    galleryImages: [
+      "/images/interiors/bedroom/Elegant Minimal Master Bedroom-01.jpeg",
+      "/images/interiors/bedroom/Elegant Minimal Master Bedroom-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -96,7 +105,12 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bedroom",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/bedroom/bedroom-03.jpeg",
+    heroImage: "/images/interiors/bedroom/Modern TV & Vanity Suite-01.jpeg",
+    galleryImages: [
+      "/images/interiors/bedroom/Modern TV & Vanity Suite-01.jpeg",
+      "/images/interiors/bedroom/Modern TV & Vanity Suite-02.jpeg",
+      "/images/interiors/bedroom/Modern TV & Vanity Suite-03.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -131,7 +145,12 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bedroom",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/bedroom/bedroom-04.jpeg",
+    heroImage: "/images/interiors/bedroom/Luxury Statement Bedroom-01.jpeg",
+    galleryImages: [
+      "/images/interiors/bedroom/Luxury Statement Bedroom-01.jpeg",
+      "/images/interiors/bedroom/Luxury Statement Bedroom-02.jpeg",
+      "/images/interiors/bedroom/Luxury Statement Bedroom-03.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -166,7 +185,11 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Feature Wall",
     presentation: { importance: "secondary", aspect: "wide" },
-    heroImage: "/images/interiors/bedroom/bedroom-05.jpeg",
+    heroImage: "/images/interiors/bedroom/Designer Media Feature Wall-01.jpeg",
+    galleryImages: [
+      "/images/interiors/bedroom/Designer Media Feature Wall-01.jpeg",
+      "/images/interiors/bedroom/Designer Media Feature Wall-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -201,7 +224,11 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Wardrobe Design",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/bedroom/bedroom-06.jpeg",
+    heroImage: "/images/interiors/bedroom/Luxury Cane Wardrobe-01.jpeg",
+    galleryImages: [
+      "/images/interiors/bedroom/Luxury Cane Wardrobe-01.jpeg",
+      "/images/interiors/bedroom/Luxury Cane Wardrobe-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -237,7 +264,11 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bedroom",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/bedroom/bedroom-07.jpeg",
+    heroImage: "/images/interiors/bedroom/Premium Master Suite-01.jpeg",
+    galleryImages: [
+      "/images/interiors/bedroom/Premium Master Suite-01.jpeg",
+      "/images/interiors/bedroom/Premium Master Suite-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -273,7 +304,7 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Feature Wall",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/bedroom/bedroom-08.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -309,7 +340,7 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Seating Area",
     presentation: { importance: "secondary", aspect: "landscape" },
-    heroImage: "/images/interiors/bedroom/bedroom-09.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Contemporary Luxury",
     overview:
@@ -345,7 +376,7 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bedroom",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/bedroom/bedroom-10.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -381,7 +412,7 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Feature Wall",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/bedroom/bedroom-11.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -417,7 +448,7 @@ export const BEDROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bedroom",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/bedroom/bedroom-12.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:

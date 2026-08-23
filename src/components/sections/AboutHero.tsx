@@ -1,8 +1,9 @@
 "use client";
 
-import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useRef } from "react";
+
+import { WatermarkedImage } from "@/components/ui/WatermarkedImage";
 
 import { gsap } from "@/animations/gsap/gsap.config";
 import { CTA_BUTTON_CLASSES } from "@/components/ui/ctaButtonClasses";
@@ -119,10 +120,10 @@ export function AboutHero() {
       </div>
 
       <div className="relative min-h-[45vh] flex-1 md:min-h-0 md:w-1/2">
-        <Image
+        <WatermarkedImage
           data-about-hero-image
-          src="/images/elevations/elevation-07.jpeg"
-          alt="A contemporary AY Architects villa elevation"
+          src="/images/elevations/The Black Frame-01.jpeg"
+          alt="A contemporary AY Architects office tower elevation"
           fill
           sizes="(min-width: 768px) 50vw, 100vw"
           priority

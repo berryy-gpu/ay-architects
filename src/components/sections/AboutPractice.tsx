@@ -79,18 +79,19 @@ export function AboutPractice() {
 
         <div
           data-reveal-item
-          className="translate-y-3 opacity-0 md:mt-4 md:justify-self-end"
+          className="translate-y-3 opacity-0 md:mt-4 md:self-center"
         >
-          <div className="relative mx-auto aspect-[9/16] w-full max-w-[300px] overflow-hidden rounded-2xl border border-accent-secondary/25 bg-surface shadow-[0_20px_50px_-25px_rgba(19,43,35,0.4)]">
+          {/* The clip is natively landscape (~16:9) — framed at its own
+              ratio rather than the previous 9:16 phone-mockup treatment,
+              so nothing is cropped. Ambient supporting footage only, no
+              caption on top of or under it. */}
+          <div className="relative aspect-[16/9] w-full overflow-hidden rounded-2xl border border-accent-secondary/25 bg-surface shadow-[0_20px_50px_-25px_rgba(19,43,35,0.4)]">
             <AutoplayVideo
-              src="/videos/about/site-progress-walkthrough.mp4"
-              poster="/images/about/site-progress-poster.jpg"
-              sizes="(min-width: 768px) 300px, 80vw"
+              src="/videos/about/about video.mp4"
+              poster="/images/elevations/Casa Aurelia-02.jpeg"
+              sizes="(min-width: 768px) 40vw, 90vw"
             />
           </div>
-          <p className="mx-auto mt-4 max-w-[300px] text-center font-sans text-[11px] uppercase tracking-[0.2em] text-foreground/60">
-            From the process to the result
-          </p>
         </div>
       </div>
     </section>

@@ -10,7 +10,8 @@ export const BATHROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bathroom",
     presentation: { importance: "secondary", aspect: "wide" },
-    heroImage: "/images/interiors/bathroom/bathroom-01.jpeg",
+    heroImage: "/images/interiors/bathroom/Luxury Floating Vanity Bathroom-01.jpeg",
+    coverOrientation: "portrait",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -76,7 +77,7 @@ export const BATHROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bathroom",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/bathroom/bathroom-02.jpeg",
+    heroImage: "/images/interiors/bathroom/Modern Spa Bathroom Suite-01.jpeg",
     drawingType: "Interior Perspective",
     style: "Modern Contemporary",
     overview:
@@ -136,7 +137,12 @@ export const BATHROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bathroom",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/bathroom/bathroom-03.jpeg",
+    heroImage: "/images/interiors/bathroom/Contemporary Dark Stone Bathroom-01.jpeg",
+    coverOrientation: "portrait",
+    galleryImages: [
+      "/images/interiors/bathroom/Contemporary Dark Stone Bathroom-01.jpeg",
+      "/images/interiors/bathroom/Contemporary Dark Stone Bathroom-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -196,7 +202,7 @@ export const BATHROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bathroom Vanity",
     presentation: { importance: "standard", aspect: "landscape" },
-    heroImage: "/images/interiors/bathroom/bathroom-04.jpeg",
+    heroImage: "",
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:
@@ -256,7 +262,11 @@ export const BATHROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bathroom",
     presentation: { importance: "standard", aspect: "square" },
-    heroImage: "/images/interiors/bathroom/bathroom-05.jpeg",
+    heroImage: "/images/interiors/bathroom/Minimal Contemporary Bathroom-01.jpeg",
+    galleryImages: [
+      "/images/interiors/bathroom/Minimal Contemporary Bathroom-01.jpeg",
+      "/images/interiors/bathroom/Minimal Contemporary Bathroom-02.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Minimalist",
     overview:
@@ -316,7 +326,15 @@ export const BATHROOMS: Project[] = [
     classification: "Residential Interior",
     subtype: "Bathroom",
     presentation: { importance: "standard", aspect: "portrait" },
-    heroImage: "/images/interiors/bathroom/bathroom-06.jpeg",
+    heroImage: "/images/interiors/bathroom/Premium Walk-In Bathroom-01.jpeg",
+    coverOrientation: "portrait",
+    galleryImages: [
+      "/images/interiors/bathroom/Premium Walk-In Bathroom-01.jpeg",
+      "/images/interiors/bathroom/Premium Walk-In Bathroom-02.jpeg",
+      "/images/interiors/bathroom/Premium Walk-In Bathroom-03.jpeg",
+      "/images/interiors/bathroom/Premium Walk-In Bathroom-04.jpeg",
+      "/images/interiors/bathroom/Premium Walk-In Bathroom-05.jpeg",
+    ],
     drawingType: "Interior Perspective",
     style: "Modern Luxury",
     overview:

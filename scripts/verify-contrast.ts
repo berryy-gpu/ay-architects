@@ -152,6 +152,16 @@ const ACCEPTED_ACCENT_USAGES: AccentUsage[] = [
     reason:
       'the "Music" label when playing — MusicToggle is only ever mounted on dark hero sections (bg-background-dark), gold-on-forest is 5.68:1, checked above',
   },
+  {
+    match: 'RotatingWordLine.tsx:40:text-accent',
+    reason:
+      'the rotating word in tone="dark" usage — always rendered on bg-background-dark, gold-on-forest is 5.68:1, checked above',
+  },
+  {
+    match: "RotatingWordLine.tsx:45:text-accent-secondary",
+    reason:
+      'the rotating word in tone="light" usage — Gold fails even the 3:1 large-text minimum on bg-background (2.02:1), so Sage stands in as the accented color there instead; at this heading-scale bold text (>=24px, large-text threshold), sage-on-background is 3.75:1, which clears 3:1 but not the stricter 4.5:1 normal-text minimum — never use this pairing below large-text size',
+  },
 ];
 
 for (const line of foundLines) {

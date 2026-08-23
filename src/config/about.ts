@@ -64,33 +64,6 @@ export const WORK_AREAS: WorkArea[] = [
   },
 ];
 
-export interface DesignArea {
-  name: string;
-  body: string;
-}
-
-export const DESIGN_AREAS: DesignArea[] = [
-  {
-    name: "Residential Architecture",
-    body: "Contemporary homes, luxury villas, urban residences, and private architectural projects.",
-  },
-  {
-    name: "Interior Design",
-    body: "Bedrooms, living spaces, dining rooms, kitchens, offices, entertainment spaces, and complete residential interiors.",
-  },
-  {
-    name: "Commercial Architecture",
-    body: "Office buildings, commercial developments, and contemporary architectural concepts.",
-  },
-  {
-    name: "Office Interiors",
-    body: "Executive offices, workspaces, storage systems, feature walls, and professional environments.",
-  },
-  {
-    name: "Architectural Visualization",
-    body: "Photorealistic 3D interiors, exterior elevations, architectural concepts, and presentation imagery.",
-  },
-];
 
 export interface AboutProcessStep {
   name: string;

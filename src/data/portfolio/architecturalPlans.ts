@@ -16,6 +16,7 @@ export const ARCHITECTURAL_PLANS: Project[] = [
     subtype: "Luxury Residential Estate",
     presentation: { importance: "secondary", aspect: "wide" },
     heroImage: "/images/architectural-plans/architecturalplan-01.jpeg",
+    coverOrientation: "portrait",
     drawingType: "Site Master Plan",
     style: "Contemporary Estate Planning",
     overview:
@@ -82,6 +83,7 @@ export const ARCHITECTURAL_PLANS: Project[] = [
     subtype: "Luxury Resort",
     presentation: { importance: "standard", aspect: "square" },
     heroImage: "/images/architectural-plans/architecturalplan-02.jpeg",
+    coverOrientation: "portrait",
     drawingType: "Site Development Plan",
     style: "Modern Resort Planning",
     overview:
@@ -130,6 +132,7 @@ export const ARCHITECTURAL_PLANS: Project[] = [
     subtype: "Luxury Residence",
     presentation: { importance: "standard", aspect: "portrait" },
     heroImage: "/images/architectural-plans/architecturalplan-03.jpeg",
+    coverOrientation: "portrait",
     drawingType: "Working Plan",
     style: "Modern Classical",
     overview:
@@ -167,6 +170,7 @@ export const ARCHITECTURAL_PLANS: Project[] = [
     subtype: "Residential Estate",
     presentation: { importance: "standard", aspect: "landscape" },
     heroImage: "/images/architectural-plans/architecturalplan-04.jpeg",
+    coverOrientation: "portrait",
     drawingType: "Site Master Plan",
     style: "Contemporary Estate Planning",
     overview:
@@ -203,6 +207,7 @@ export const ARCHITECTURAL_PLANS: Project[] = [
     subtype: "Sports & Recreation Development",
     presentation: { importance: "secondary", aspect: "landscape" },
     heroImage: "/images/architectural-plans/architecturalplan-05.jpeg",
+    coverOrientation: "portrait",
     drawingType: "Master Site Plan",
     style: "Modern Urban Planning",
     overview:
@@ -256,6 +261,7 @@ export const ARCHITECTURAL_PLANS: Project[] = [
     subtype: "Luxury Villa",
     presentation: { importance: "standard", aspect: "square" },
     heroImage: "/images/architectural-plans/architecturalplan-06.jpeg",
+    coverOrientation: "portrait",
     drawingType: "First Floor Plan",
     style: "Modern Classical",
     overview:

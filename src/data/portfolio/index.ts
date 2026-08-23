@@ -3,9 +3,11 @@ import { BATHROOMS } from "@/data/portfolio/bathrooms";
 import { BEDROOMS } from "@/data/portfolio/bedrooms";
 import { DINING_ROOMS } from "@/data/portfolio/diningRooms";
 import { ELEVATIONS } from "@/data/portfolio/elevations";
+import { EXCLUSIVES } from "@/data/portfolio/exclusives";
 import { KITCHENS } from "@/data/portfolio/kitchens";
 import { OFFICES } from "@/data/portfolio/offices";
 import { TV_LOUNGES } from "@/data/portfolio/tvLounges";
+import { hasCoverImage } from "@/lib/portfolio";
 import type { Project, ProjectCategory } from "@/types/portfolio";
 
 export * from "@/data/portfolio/architecturalPlans";
@@ -13,6 +15,7 @@ export * from "@/data/portfolio/bathrooms";
 export * from "@/data/portfolio/bedrooms";
 export * from "@/data/portfolio/diningRooms";
 export * from "@/data/portfolio/elevations";
+export * from "@/data/portfolio/exclusives";
 export * from "@/data/portfolio/featured";
 export * from "@/data/portfolio/kitchens";
 export * from "@/data/portfolio/offices";
@@ -29,6 +32,7 @@ export const ALL_PROJECTS: Project[] = [
   ...OFFICES,
   ...ELEVATIONS,
   ...ARCHITECTURAL_PLANS,
+  ...EXCLUSIVES,
 ];
 
 export function getProjectBySlug(slug: string): Project | undefined {
@@ -43,6 +47,7 @@ export function getRelatedProjects(project: Project, limit = 4): Project[] {
   return ALL_PROJECTS.filter(
     (candidate) =>
       candidate.category === project.category &&
-      candidate.slug !== project.slug
+      candidate.slug !== project.slug &&
+      hasCoverImage(candidate)
   ).slice(0, limit);
 }

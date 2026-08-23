@@ -23,7 +23,7 @@ export function CategoryFilter({
 }: CategoryFilterProps) {
   return (
     <nav aria-label="Filter projects by category">
-      <ul className="flex items-baseline gap-x-8 overflow-x-auto whitespace-nowrap pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:flex-wrap sm:gap-x-10 sm:gap-y-5 sm:whitespace-normal [&::-webkit-scrollbar]:hidden">
+      <ul className="flex items-baseline gap-x-6 overflow-x-auto whitespace-nowrap pb-1 [-ms-overflow-style:none] [scrollbar-width:none] sm:flex-wrap sm:gap-x-7 sm:gap-y-3 sm:whitespace-normal [&::-webkit-scrollbar]:hidden">
         {options.map((option) => {
           const isActive = value === option.value;
 
@@ -33,21 +33,16 @@ export function CategoryFilter({
                 type="button"
                 aria-pressed={isActive}
                 onClick={() => onChange(option.value)}
-                className={`group relative pb-2 font-sans text-xs uppercase tracking-[0.25em] transition-colors duration-300 ${
+                className={`relative pb-1.5 font-sans text-[10px] font-light uppercase tracking-[0.16em] transition-colors duration-300 ${
                   isActive
                     ? "text-foreground"
-                    : "text-foreground/70 hover:text-foreground"
+                    : "text-foreground/45 hover:text-foreground/75"
                 }`}
               >
                 {option.label}
-                <span className="ml-2 tracking-normal text-foreground/70">
-                  {option.count}
-                </span>
                 <span
-                  className={`absolute bottom-0 left-0 h-px w-full origin-left bg-foreground transition-transform duration-300 ease-out ${
-                    isActive
-                      ? "scale-x-100"
-                      : "scale-x-0 group-hover:scale-x-100"
+                  className={`absolute bottom-0 left-0 h-px w-full origin-left bg-foreground/60 transition-transform duration-300 ease-out ${
+                    isActive ? "scale-x-100" : "scale-x-0"
                   }`}
                   aria-hidden="true"
                 />

@@ -1,14 +1,25 @@
 "use client";
 
-import Image from "next/image";
 import { useEffect, useRef } from "react";
 
 import { gsap, ScrollTrigger } from "@/animations/gsap/gsap.config";
+import { WatermarkedImage } from "@/components/ui/WatermarkedImage";
 import { FEATURED_PROJECTS } from "@/data/portfolio/featured";
 import { useLenis } from "@/hooks/useLenis";
 import { useMediaQuery } from "@/hooks/useMediaQuery";
 
 const TOTAL = FEATURED_PROJECTS.length.toString().padStart(2, "0");
+
+// Mobile-only swap (<768px, matching the site's existing md:hidden
+// breakpoint convention — see Navbar's mobile menu). Both image sets render
+// in the DOM at all times and the swap is pure CSS visibility, so there's
+// no flash of the wrong image and no JS viewport detection needed. Order
+// matches FEATURED_PROJECTS' three slots 1:1.
+const MOBILE_FEATURED = [
+  { title: "The Grand Facade", src: "/images/elevations/The Grand Facade.jpeg" },
+  { title: "The Black Frame", src: "/images/elevations/The Black Frame-01.jpeg" },
+  { title: "The Axis", src: "/images/elevations/The Axis.jpeg" },
+];
 
 export function FeaturedProjects() {
   const sectionRef = useRef<HTMLElement>(null);
@@ -109,16 +120,32 @@ export function FeaturedProjects() {
             data-stop-frame
             className="sticky top-0 h-dvh w-full overflow-hidden bg-background-dark"
           >
-            <Image
-              src={project.heroImage}
-              alt={project.title}
-              fill
-              sizes="100vw"
-              className="object-cover"
-            />
+            <div className="absolute inset-0 md:hidden">
+              <WatermarkedImage
+                src={MOBILE_FEATURED[i].src}
+                alt={MOBILE_FEATURED[i].title}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
+            <div className="absolute inset-0 hidden md:block">
+              <WatermarkedImage
+                src={project.heroImage}
+                alt={project.title}
+                fill
+                sizes="100vw"
+                className="object-cover"
+              />
+            </div>
             <div className="absolute inset-0 bg-gradient-to-t from-background-dark/50 via-transparent to-transparent" />
             <p className="absolute bottom-10 left-8 font-sans text-xs uppercase tracking-[0.25em] text-foreground-on-dark/90 sm:left-12 md:left-16">
-              {String(i + 1).padStart(2, "0")} — {project.title}
+              <span className="md:hidden">
+                {String(i + 1).padStart(2, "0")} — {MOBILE_FEATURED[i].title}
+              </span>
+              <span className="hidden md:inline">
+                {String(i + 1).padStart(2, "0")} — {project.title}
+              </span>
             </p>
           </div>
         </div>

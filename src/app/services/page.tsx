@@ -6,6 +6,7 @@ import { ServicesFAQ } from "@/components/sections/ServicesFAQ";
 import { ServicesHero } from "@/components/sections/ServicesHero";
 import { ServicesProcess } from "@/components/sections/ServicesProcess";
 import { CtaSection } from "@/components/ui/CtaSection";
+import { RotatingWordLine } from "@/components/ui/RotatingWordLine";
 
 export const metadata: Metadata = {
   title: "Services",
@@ -13,11 +14,20 @@ export const metadata: Metadata = {
     "Residential interior design, architectural documentation, master planning, commercial architecture, and 3D visualisation.",
 };
 
+const SERVICES_ROTATING_WORDS = [
+  "ARCHITECTURE",
+  "INTERIORS",
+  "ELEVATIONS",
+  "VISUALIZATIONS",
+  "EXPERIENCES",
+];
+
 export default function ServicesPage() {
   return (
     <main>
       <ServicesHero />
       <ServicesCaseStudyStrip />
+      <RotatingWordLine prefix="We create" words={SERVICES_ROTATING_WORDS} tone="light" />
       <ServicesCapabilityList />
       <ServicesProcess />
       <ServicesFAQ />
