@@ -3,12 +3,15 @@ import Link from "next/link";
 
 import { PortfolioGrid } from "@/components/portfolio/PortfolioGrid";
 import { PORTFOLIO_FILTERS } from "@/lib/portfolio";
+import { buildMetadata } from "@/lib/seo";
 import type { PortfolioFilter } from "@/types/portfolio";
 
-export const metadata: Metadata = {
-  title: "Portfolio Archive",
-  description: "The complete AY Architects project archive.",
-};
+export const metadata: Metadata = buildMetadata({
+  title: "Portfolio",
+  description:
+    "Browse the full AY Architects project gallery — Lahore-based interior design and architecture across bedrooms, kitchens, bathrooms, dining rooms, offices, elevations, and more.",
+  path: "/portfolio",
+});
 
 interface PortfolioArchivePageProps {
   searchParams: Promise<{ category?: string }>;

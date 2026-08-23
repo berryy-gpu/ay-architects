@@ -124,9 +124,9 @@ export function PortfolioGrid({
           </p>
         )}
         <div className="flex flex-wrap items-baseline gap-x-4 gap-y-2">
-          <h2 className="font-display text-4xl text-foreground sm:text-5xl">
+          <h1 className="font-display text-4xl text-foreground sm:text-5xl">
             {headingLabel}
-          </h2>
+          </h1>
           <span className="font-sans text-xs uppercase tracking-[0.2em] text-foreground/70">
             {filteredProjects.length} Projects
           </span>

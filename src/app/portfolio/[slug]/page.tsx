@@ -8,6 +8,7 @@ import {
   getRelatedProjects,
 } from "@/data/portfolio";
 import { CATEGORY_LABELS } from "@/lib/portfolio";
+import { buildMetadata } from "@/lib/seo";
 
 interface ProjectPageProps {
   params: Promise<{ slug: string }>;
@@ -28,15 +29,15 @@ export async function generateMetadata({
   const description =
     project.overview || `${project.title} — ${CATEGORY_LABELS[project.category]}`;
 
-  return {
+  return buildMetadata({
     title: project.title,
     description,
-    openGraph: {
-      title: project.title,
-      description,
-      images: [{ url: project.heroImage }],
-    },
-  };
+    path: `/portfolio/${project.slug}`,
+    // Projects with no matching photography yet have heroImage: "" — fall
+    // through to the sitewide default OG image rather than an empty src.
+    image: project.heroImage || undefined,
+    imageAlt: project.title,
+  });
 }
 
 export default async function ProjectPage({ params }: ProjectPageProps) {

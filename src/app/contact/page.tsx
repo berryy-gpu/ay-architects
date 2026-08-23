@@ -5,12 +5,14 @@ import { ContactForm } from "@/components/sections/ContactForm";
 import { ContactMethodCard } from "@/components/ui/ContactMethodCard";
 import { CtaSection } from "@/components/ui/CtaSection";
 import { CONTACT_METHODS, contactInfo } from "@/config/contact";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Contact",
   description:
     "Get in touch with AY Architects — email, WhatsApp, or send a message directly.",
-};
+  path: "/contact",
+});
 
 export default function ContactPage() {
   return (

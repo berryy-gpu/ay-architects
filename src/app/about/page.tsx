@@ -11,12 +11,15 @@ import { AboutStats } from "@/components/sections/AboutStats";
 import { AboutWork } from "@/components/sections/AboutWork";
 import { CtaSection } from "@/components/ui/CtaSection";
 import { RotatingWordLine } from "@/components/ui/RotatingWordLine";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "About",
   description:
     "AY Architects is a Lahore-based architecture and interior design practice led by Araiz Ahmed Khan — architecture, interiors, and 3D visualization under one roof.",
-};
+  path: "/about",
+  image: "/images/elevations/The Black Frame-01.jpeg",
+});
 
 const ABOUT_ROTATING_WORDS = ["PURPOSE", "PRECISION", "CHARACTER", "BALANCE", "INTENT"];
 

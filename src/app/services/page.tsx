@@ -7,12 +7,14 @@ import { ServicesHero } from "@/components/sections/ServicesHero";
 import { ServicesProcess } from "@/components/sections/ServicesProcess";
 import { CtaSection } from "@/components/ui/CtaSection";
 import { RotatingWordLine } from "@/components/ui/RotatingWordLine";
+import { buildMetadata } from "@/lib/seo";
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildMetadata({
   title: "Services",
   description:
     "Residential interior design, architectural documentation, master planning, commercial architecture, and 3D visualisation.",
-};
+  path: "/services",
+});
 
 const SERVICES_ROTATING_WORDS = [
   "ARCHITECTURE",

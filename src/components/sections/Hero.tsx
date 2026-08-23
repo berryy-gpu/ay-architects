@@ -151,12 +151,12 @@ export function Hero() {
           </span>
         </div>
 
-        <p
+        <h1
           data-hero-statement
-          className="max-w-sm translate-y-3 font-sans text-sm leading-relaxed text-foreground-on-dark/75 opacity-0 sm:max-w-md sm:text-base"
+          className="max-w-sm translate-y-3 font-sans text-sm font-normal leading-relaxed text-foreground-on-dark/75 opacity-0 sm:max-w-md sm:text-base"
         >
           Designing architecture that transcends time.
-        </p>
+        </h1>
       </motion.div>
 
       <ScrollCue prefersReducedMotion={prefersReducedMotion} />
