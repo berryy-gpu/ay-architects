@@ -125,6 +125,7 @@ export function FeaturedProjects() {
                 src={MOBILE_FEATURED[i].src}
                 alt={MOBILE_FEATURED[i].title}
                 fill
+                priority={i === 0}
                 sizes="100vw"
                 className="object-cover"
               />
@@ -134,6 +135,7 @@ export function FeaturedProjects() {
                 src={project.heroImage}
                 alt={project.title}
                 fill
+                priority={i === 0}
                 sizes="100vw"
                 className="object-cover"
               />

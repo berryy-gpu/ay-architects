@@ -30,6 +30,9 @@ yarn-error.log*
 # vercel
 .vercel
 
+# uncompressed originals kept locally before a media-compression pass
+/backup-original-media
+
 # typescript
 *.tsbuildinfo
 next-env.d.ts
