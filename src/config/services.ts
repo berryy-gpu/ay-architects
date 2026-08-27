@@ -97,7 +97,7 @@ export const TEASER_SERVICES = SERVICES.filter((service) =>
 
 /**
  * Capability list vocabulary — pulled from terms already present across the
- * 73 projects' real data (materialPalette, lightingFeatures, drawingType,
+ * 73+ projects' real data (materialPalette, lightingFeatures, drawingType,
  * spacePlanning/spatialOrganization, facadeComposition, etc.), grouped by
  * theme rather than invented as new marketing copy.
  */

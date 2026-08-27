@@ -19,6 +19,13 @@ export const IMAGE_DIMENSIONS: Record<string, { width: number; height: number }>
   "/images/interiors/bathroom/Premium Walk-In Bathroom-03.jpeg": { width: 1037, height: 1280 },
   "/images/interiors/bathroom/Premium Walk-In Bathroom-04.jpeg": { width: 858, height: 1280 },
   "/images/interiors/bathroom/Premium Walk-In Bathroom-05.jpeg": { width: 1280, height: 1017 },
+  "/images/interiors/bathroom/Luxurious Bathroom-01.jpeg": { width: 1483, height: 1061 },
+  "/images/interiors/bathroom/Luxurious Bathroom-02.jpeg": { width: 676, height: 941 },
+  "/images/interiors/bathroom/Luxurious Bathroom-03.jpeg": { width: 1085, height: 1450 },
+  "/images/interiors/bathroom/Luxurious Bathroom-04.jpeg": { width: 1483, height: 1061 },
+  "/images/interiors/bathroom/Luxurious Bathroom-05.jpeg": { width: 1084, height: 1451 },
+  "/images/interiors/bathroom/Luxurious Bathroom-06.jpeg": { width: 1085, height: 1450 },
+  "/images/interiors/bathroom/Luxurious Bathroom-07.jpeg": { width: 1600, height: 900 },
 
   "/images/interiors/bedroom/Minimal Contemporary Bedroom-01.jpeg": { width: 1024, height: 1280 },
   "/images/interiors/bedroom/Minimal Contemporary Bedroom-02.jpeg": { width: 1173, height: 1086 },
